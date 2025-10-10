@@ -31,7 +31,7 @@ class Camera : public Subject
 
         int width, height;
 
-        float speed = 0.5f, sens = 0.5f;
+        float speed = 0.1f, sens = 0.5f;
 
     public:
 

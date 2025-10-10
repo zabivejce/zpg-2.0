@@ -13,7 +13,7 @@ void Scene::addObject(DrawableObject* obj)
 
 void Scene::drawScene()
 {
-    camera->matrix(170.0f,0.1f,100.0f);
+    camera->matrix(90.0f,0.1f,100.0f);
     for(auto* obj : objects)
         obj->draw(camera);
 }

@@ -11,7 +11,7 @@ void DrawableObject::draw(Camera* camera)
     glm::mat4 M = transformation->getModelMatrix();
     shader->setProgram();
     shader->setUniform("model", M);
-    shader->setUniform("view",glm::mat4(glm::mat3(camera->getView())));
+    shader->setUniform("view",camera->getView());
     shader->setUniform("projection",camera->getProjection());
     model->drawModel();
     shader->resetProgram();
