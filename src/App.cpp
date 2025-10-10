@@ -1,4 +1,5 @@
 #include "App.hpp"
+#include "DrawableObject.hpp"
 #include "Scene.hpp"
 #include "TransformationComposite.hpp"
 #include <cstddef>
@@ -53,15 +54,28 @@ void App::createShaders()
 
 void App::createModels()
 {
+	const int space = 5, size = 8;
 	scenes.emplace_back(new Scene(shaders));
-	objects.emplace_back(new DrawableObject(new Model(sphere,sizeof(sphere)), shaders[0],new TransformationComposite({new Translation(glm::vec3(0.0f, 0.0f, 0.0f))})));
+	for(int i = 0 ; i < size ; i++)
+	{
+		for(int j = 0 ; j < size ; j++)
+		{
+			objects.emplace_back(new DrawableObject(new Model(tree,sizeof(tree)), shaders[0],new TransformationComposite({new Translation(glm::vec3(i * space, 0.0f, j * space))})));
+			objects.emplace_back(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[0], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
+		}
+	}
+	for(auto* obj : objects)
+	{
+		scenes[0]->addObject(obj);
+	}
 	scenes[0]->addObject(objects[0]);
+	scenes[0]->addObject(objects[1]);
 }
 
 void App::run()
 {
 	glEnable(GL_DEPTH_TEST);
-	while (!glfwWindowShouldClose(window)){
+	while(!glfwWindowShouldClose(window)){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		scenes[0]->drawScene();
