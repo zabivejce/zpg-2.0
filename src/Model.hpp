@@ -12,11 +12,11 @@
 class Model
 {
     private:
-        float* points;
+        const float* points;
         int arrSize;
         GLuint VAO = 0;
         GLuint VBO = 0;
     public:
-        Model(float* points, int arrSize);
+        Model(const float* points, int arrSize);
         void drawModel();
 };

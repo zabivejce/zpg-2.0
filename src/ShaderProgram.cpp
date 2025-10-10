@@ -30,3 +30,16 @@ void ShaderProgram::setProgram()
 {
     glUseProgram(Id);
 }
+
+void ShaderProgram::setUniform(const char* name, glm::mat4 matrix)
+{
+    GLint uniformLocation = glGetUniformLocation(Id, name);
+    if (uniformLocation != -1)
+    {
+        glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
+    }
+    else
+    {
+        std::cout<< "did not set uniform\n";
+    }
+}

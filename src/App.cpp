@@ -2,6 +2,13 @@
 #include "DrawableObject.hpp"
 #include "Model.hpp"
 #include "ShaderProgram.hpp"
+#include "models/bushes.hpp"
+#include "models/gift.hpp"
+#include "models/plain.hpp"
+#include "models/sphere.hpp"
+#include "models/suzi_flat.hpp"
+#include "models/suzi_smooth.hpp"
+#include "models/tree.hpp"
 
 void App::init()
 {
@@ -18,7 +25,7 @@ void App::init()
 	0.6f, 0.8f, 0.0f,
 	0.8f, 0.8f, 0.0f
 	};
-
+	/*
 	const char* vertS0 =
 	"#version 330\n"
 	"layout(location=0) in vec3 vp;"
@@ -35,22 +42,23 @@ void App::init()
 	"void main () {"
 	"frag_colour = vec4 (1.0, 0.0, 0.0, 1.0);"
 	"}";
+	*/
 
 	const char* vertS1 =
 	"#version 330\n"
 	"layout(location=0) in vec3 vp;"
-	"out vec3 position;"
+	"uniform mat4 model;"
+	"out vec3 color;"
 	"void main () {"
-	"gl_Position = vec4 (vp, 1.0);"
-	"position = vp;"
+	"gl_Position = modelMatrix * vec4(0.1);"
 	"}";
 
 	const char* fragS1 =
 	"#version 330\n"
-	"in vec3 position;"
+	"in vec3 color;"
 	"out vec4 frag_colour;"
 	"void main () {"
-	"frag_colour = vec4 (0.0, 1.0, 0.0, 1.0);"
+	"frag_colour = vec4 (1.0, 1.0, 0.0, 1.0);"
 	"}";
 
 	//glfwSetErrorCallback(error_callback);
@@ -87,19 +95,18 @@ void App::init()
 	float ratio = width / (float)height;
 	glViewport(0, 0, width, height);
 
-	shader0 = new ShaderProgram(vertS0,fragS0);
+	//shader0 = new ShaderProgram(vertS0,fragS0);
 	shader1 = new ShaderProgram(vertS1,fragS1);
-	triangle = new DrawableObject(new Model(points_trg, sizeof(points_trg)),shader1);
-	square = new DrawableObject(new Model(points_sqr,sizeof(points_sqr)), shader0);
+	testObject = new DrawableObject(new Model(points_trg,sizeof(points_trg)), shader1);
 }
 
 void App::start()
 {
+	glEnable(GL_DEPTH_TEST);
 	while (!glfwWindowShouldClose(window)){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		triangle->draw();
-		square->draw();
+		testObject->draw();
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);

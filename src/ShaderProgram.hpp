@@ -13,8 +13,7 @@
 
 //Include the standard C++ headers  
 #include <stdlib.h>
-#include <stdio.h>
-#include <thread>
+#include <iostream>
 
 #pragma once
 
@@ -27,4 +26,5 @@ class ShaderProgram{
     public:
         ShaderProgram(const char* vertS, const char* fragS);
         void setProgram();
+        void setUniform(const char* name, glm::mat4 mat);
 };
