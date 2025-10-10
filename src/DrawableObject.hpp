@@ -2,6 +2,7 @@
 #include "Model.hpp"
 #include "ShaderProgram.hpp"
 #include "TransformationComponent.hpp"
+#include "Camera.hpp"
 class DrawableObject
 {
     private:
@@ -10,5 +11,5 @@ class DrawableObject
         TransformationComponent* transformation;
     public:
         DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr);
-        void draw();
+        void draw(Camera* camera);
 };

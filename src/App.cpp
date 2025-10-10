@@ -65,6 +65,7 @@ void App::run()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		scenes[0]->drawScene();
+		scenes[0]->getCamnera()->controls(window);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);

@@ -13,8 +13,8 @@ uniform mat4 model;
 void main()
 {
     mat3 normalMatrix = transpose(inverse(mat3(model)));
-    gl_Position = model * vec4(aPos, 1.0);
-    color = aColor;
+    gl_Position = projection * view * model * vec4(aPos, 1.0);
+    color = normalize(aColor) * 0.5 + 0.5;
 }
 )";
 inline const char* frag_sh = R"(
@@ -24,7 +24,7 @@ out vec4 FragColor;
 
 void main()
 {
-    FragColor = vec4(1.0,0.0,0.0, 1.0);
+    FragColor = vec4(color, 1.0);
 }
 )";
 

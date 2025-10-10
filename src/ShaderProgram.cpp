@@ -30,27 +30,25 @@ ShaderProgram::ShaderProgram(const char* vertS, const char* fragS)
 
 void ShaderProgram::setUniform(const char* name, glm::mat4 matrix)
 {
-    GLint uniformLocation = glGetUniformLocation(Id, "model");
-    //std::cout << uniformLocation << std::endl;
-    //std::cout << Id << std::endl;
-    if (uniformLocation == -1)
-        std::cout<< "did not set uniform\n";
-    else
+    GLint uniformLocation = glGetUniformLocation(Id, name);
+    if (uniformLocation != -1)
         glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
+    else
+        std::cout<< "did not set uniform\n";
 }
 void ShaderProgram::setUniform(const char* name, int var)
 {
     GLint uniformLocation = glGetUniformLocation(Id, name);
-    if (uniformLocation == -1)
-        std::cout<< "did not set uniform\n";
-    else
+    if (uniformLocation != -1)
         glUniform1i(uniformLocation, var);
+    else
+        std::cout<< "did not set uniform\n";
 }
 void ShaderProgram::setUniform(const char* name, glm::vec3 matrix)
 {
     GLint uniformLocation = glGetUniformLocation(Id, name);
-    if (uniformLocation == -1)
-        std::cout<< "did not set uniform\n";
-    else
+    if (uniformLocation != -1)
         glUniform3fv(uniformLocation, 1, glm::value_ptr(matrix));
+    else
+        std::cout<< "did not set uniform\n";
 }

@@ -57,6 +57,7 @@ void Camera::controls(GLFWwindow* window)
     glm::vec3 fwd = glm::normalize(center - eye);
     glm::vec3 right = glm::normalize(glm::cross(fwd,up));
     glm::vec3 vert = glm::normalize(up);
+    std::cout << eye.x << eye.y << eye.z <<"\n" << center.x << center.y << center.z << std::endl;
 
     if(glfwGetKey(window,GLFW_KEY_W) == GLFW_PRESS)
     {
