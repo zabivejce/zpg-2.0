@@ -13,17 +13,28 @@
 #include "ShaderProgram.hpp"
 #include "Model.hpp"
 #include "DrawableObject.hpp"
+#include "Scene.hpp"
+#include "Translation.hpp"
+#include "models/bushes.hpp"
+#include "models/gift.hpp"
+#include "models/plain.hpp"
+#include "models/sphere.hpp"
+#include "models/suzi_flat.hpp"
+#include "models/suzi_smooth.hpp"
+#include "models/tree.hpp"
+#include "shaders/shaders.hpp"
 
 class App{
     private:
     	GLFWwindow* window;
-        ShaderProgram* shader0;
-        ShaderProgram* shader1;
-        DrawableObject* testObject;
         std::vector<ShaderProgram*> shaders;
         std::vector<DrawableObject*> objects;
+        std::vector<Scene*> scenes;
 
     public:
+        App();
         void init();
-        void start();
+        void createShaders();
+        void createModels();
+        void run();
 };

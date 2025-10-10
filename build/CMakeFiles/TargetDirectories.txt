@@ -1,0 +1,3 @@
+/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles/zpg.dir
+/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles/edit_cache.dir
+/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles/rebuild_cache.dir

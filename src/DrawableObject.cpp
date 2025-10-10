@@ -1,18 +1,15 @@
 #include "DrawableObject.hpp"
-DrawableObject::DrawableObject(Model* m, ShaderProgram* sp)
+DrawableObject::DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr)
 {
     model = m;
     shader = sp;
-    M = glm::mat4(1.0f);
-
-    //M = glm::rotate(glm::mat4(1.0f),1.0f,glm::vec3(0.0f, 1.0f, 0.0f));
-    //M = glm::rotate(M, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-    //M = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    //M = glm::scale(glm::mat4(1.0f), glm::vec3(0.5f));
+    transformation = tr;
 }
 void DrawableObject::draw()
 {
-    shader->setUniform("model", M);
+    glm::mat4 M = transformation->getModelMatrix();
     shader->setProgram();
+    shader->setUniform("model", M);
     model->drawModel();
+    shader->resetProgram();
 }

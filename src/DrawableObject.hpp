@@ -1,13 +1,14 @@
 #pragma once
 #include "Model.hpp"
 #include "ShaderProgram.hpp"
+#include "TransformationComponent.hpp"
 class DrawableObject
 {
     private:
         Model* model;
         ShaderProgram* shader;
-        glm::mat4 M;
+        TransformationComponent* transformation;
     public:
-        DrawableObject(Model* m, ShaderProgram* sp);
+        DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr);
         void draw();
 };

@@ -1,4 +1,5 @@
 #include "ShaderProgram.hpp"
+#include <cstdlib>
 
 ShaderProgram::ShaderProgram(const char* vertS, const char* fragS)
 {
@@ -23,23 +24,33 @@ ShaderProgram::ShaderProgram(const char* vertS, const char* fragS)
         glGetProgramInfoLog(Id, infoLogLength, NULL, strInfoLog);
         fprintf(stderr, "Linker failure: %s\n", strInfoLog);
         delete[] strInfoLog;
+        exit(EXIT_FAILURE);
     }
-}
-
-void ShaderProgram::setProgram()
-{
-    glUseProgram(Id);
 }
 
 void ShaderProgram::setUniform(const char* name, glm::mat4 matrix)
 {
-    GLint uniformLocation = glGetUniformLocation(Id, name);
-    if (uniformLocation != -1)
-    {
-        glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
-    }
-    else
-    {
+    GLint uniformLocation = glGetUniformLocation(Id, "model");
+    //std::cout << uniformLocation << std::endl;
+    //std::cout << Id << std::endl;
+    if (uniformLocation == -1)
         std::cout<< "did not set uniform\n";
-    }
+    else
+        glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
+}
+void ShaderProgram::setUniform(const char* name, int var)
+{
+    GLint uniformLocation = glGetUniformLocation(Id, name);
+    if (uniformLocation == -1)
+        std::cout<< "did not set uniform\n";
+    else
+        glUniform1i(uniformLocation, var);
+}
+void ShaderProgram::setUniform(const char* name, glm::vec3 matrix)
+{
+    GLint uniformLocation = glGetUniformLocation(Id, name);
+    if (uniformLocation == -1)
+        std::cout<< "did not set uniform\n";
+    else
+        glUniform3fv(uniformLocation, 1, glm::value_ptr(matrix));
 }
