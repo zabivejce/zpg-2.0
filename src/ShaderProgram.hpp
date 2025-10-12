@@ -12,8 +12,8 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 
+//proc mam delat screen, kdyz to je doslova v kodu :nerd:
 
-//Include the standard C++ headers  
 #include <stdlib.h>
 #include <iostream>
 
