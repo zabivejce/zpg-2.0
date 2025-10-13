@@ -1,3 +1,0 @@
-/home/jirka/school/S7/ZPG/build/CMakeFiles/zpg.dir
-/home/jirka/school/S7/ZPG/build/CMakeFiles/edit_cache.dir
-/home/jirka/school/S7/ZPG/build/CMakeFiles/rebuild_cache.dir
