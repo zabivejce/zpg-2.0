@@ -10,11 +10,15 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <vector>
+
 #include "ShaderProgram.hpp"
+#include "ShaderLoader.hpp"
 #include "Model.hpp"
 #include "DrawableObject.hpp"
 #include "Scene.hpp"
 #include "Translation.hpp"
+#include "Scale.hpp"
+
 #include "models/bushes.hpp"
 #include "models/gift.hpp"
 #include "models/plain.hpp"
@@ -22,19 +26,18 @@
 #include "models/suzi_flat.hpp"
 #include "models/suzi_smooth.hpp"
 #include "models/tree.hpp"
-#include "shaders/shaders.hpp"
 
 class App{
     private:
     	GLFWwindow* window;
+        ShaderLoader* shLo;
         std::vector<ShaderProgram*> shaders;
-        std::vector<DrawableObject*> objects;
         std::vector<Scene*> scenes;
 
     public:
         App();
         void init();
         void createShaders();
-        void createModels();
+        void createScenes();
         void run();
 };
