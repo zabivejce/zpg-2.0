@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/jirka/school/ZPG/zpg-2.0/src/App.cpp" "CMakeFiles/zpg.dir/src/App.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/App.cpp.o.d"
-  "/home/jirka/school/ZPG/zpg-2.0/src/Camera.cpp" "CMakeFiles/zpg.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/Camera.cpp.o.d"
-  "/home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.cpp" "CMakeFiles/zpg.dir/src/DrawableObject.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/DrawableObject.cpp.o.d"
-  "/home/jirka/school/ZPG/zpg-2.0/src/Model.cpp" "CMakeFiles/zpg.dir/src/Model.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/Model.cpp.o.d"
-  "/home/jirka/school/ZPG/zpg-2.0/src/Scene.cpp" "CMakeFiles/zpg.dir/src/Scene.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/Scene.cpp.o.d"
-  "/home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.cpp" "CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o.d"
-  "/home/jirka/school/ZPG/zpg-2.0/src/main.cpp" "CMakeFiles/zpg.dir/src/main.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/main.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/App.cpp" "CMakeFiles/zpg.dir/src/App.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/App.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/Camera.cpp" "CMakeFiles/zpg.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/Camera.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/DrawableObject.cpp" "CMakeFiles/zpg.dir/src/DrawableObject.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/DrawableObject.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/Model.cpp" "CMakeFiles/zpg.dir/src/Model.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/Model.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/Scene.cpp" "CMakeFiles/zpg.dir/src/Scene.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/Scene.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/ShaderProgram.cpp" "CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o.d"
+  "/home/jirka/school/S7/ZPG/src/main.cpp" "CMakeFiles/zpg.dir/src/main.cpp.o" "gcc" "CMakeFiles/zpg.dir/src/main.cpp.o.d"
   "" "zpg" "gcc" "CMakeFiles/zpg.dir/link.d"
   )
 

@@ -1,7 +1,6 @@
-CMakeFiles/zpg.dir/src/main.cpp.o: \
- /home/jirka/school/ZPG/zpg-2.0/src/main.cpp /usr/include/stdc-predef.h \
- /home/jirka/school/ZPG/zpg-2.0/src/App.hpp /usr/include/GL/glew.h \
- /usr/include/c++/14/cstddef \
+CMakeFiles/zpg.dir/src/main.cpp.o: /home/jirka/school/S7/ZPG/src/main.cpp \
+ /usr/include/stdc-predef.h /home/jirka/school/S7/ZPG/src/App.hpp \
+ /usr/include/GL/glew.h /usr/include/c++/14/cstddef \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -354,14 +353,13 @@ CMakeFiles/zpg.dir/src/main.cpp.o: \
  /usr/include/c++/14/bits/stl_vector.h \
  /usr/include/c++/14/bits/stl_bvector.h \
  /usr/include/c++/14/bits/vector.tcc \
- /home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Camera.hpp /usr/include/glm/fwd.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Observer.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Subject.hpp \
- /usr/include/c++/14/stdlib.h \
- /home/jirka/school/ZPG/zpg-2.0/src/Model.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/TransformationComponent.hpp \
+ /home/jirka/school/S7/ZPG/src/ShaderProgram.hpp \
+ /home/jirka/school/S7/ZPG/src/Camera.hpp /usr/include/glm/fwd.hpp \
+ /home/jirka/school/S7/ZPG/src/Observer.hpp \
+ /home/jirka/school/S7/ZPG/src/Subject.hpp /usr/include/c++/14/stdlib.h \
+ /home/jirka/school/S7/ZPG/src/Model.hpp \
+ /home/jirka/school/S7/ZPG/src/DrawableObject.hpp \
+ /home/jirka/school/S7/ZPG/src/TransformationComponent.hpp \
  /usr/include/glm/glm.hpp /usr/include/c++/14/climits \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \
@@ -376,13 +374,13 @@ CMakeFiles/zpg.dir/src/main.cpp.o: \
  /usr/include/glm/detail/type_half.hpp \
  /usr/include/glm/detail/type_half.inl /usr/include/glm/integer.hpp \
  /usr/include/glm/detail/func_integer.inl \
- /home/jirka/school/ZPG/zpg-2.0/src/Scene.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Translation.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/bushes.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/gift.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/plain.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/sphere.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/suzi_flat.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/suzi_smooth.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/models/tree.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/shaders/shaders.hpp
+ /home/jirka/school/S7/ZPG/src/Scene.hpp \
+ /home/jirka/school/S7/ZPG/src/Translation.hpp \
+ /home/jirka/school/S7/ZPG/src/models/bushes.hpp \
+ /home/jirka/school/S7/ZPG/src/models/gift.hpp \
+ /home/jirka/school/S7/ZPG/src/models/plain.hpp \
+ /home/jirka/school/S7/ZPG/src/models/sphere.hpp \
+ /home/jirka/school/S7/ZPG/src/models/suzi_flat.hpp \
+ /home/jirka/school/S7/ZPG/src/models/suzi_smooth.hpp \
+ /home/jirka/school/S7/ZPG/src/models/tree.hpp \
+ /home/jirka/school/S7/ZPG/src/shaders/shaders.hpp

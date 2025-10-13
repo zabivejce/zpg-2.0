@@ -1,0 +1,25 @@
+#include "ShaderProgram.hpp"
+#include <cstdlib>
+#include <iostream>
+#include "fstream"
+#include <string>
+class ShaderLoader
+{
+    private:
+    public:
+        ShaderProgram* createProgramFromFiles(const char* vertexPath, char* fragmentPath)
+        {
+            std::ifstream vertex(vertexPath);
+            std::ifstream fragment(fragmentPath);
+            if(!vertex.is_open() || !fragment.is_open())
+            {
+                std::cout << "cannot open one of shaders\t" << vertexPath << '\t' << fragmentPath <<std::endl;
+                exit(1);
+            }
+            std::string vertexCode((std::istreambuf_iterator<char>(vertex)),std::istreambuf_iterator<char>());
+            std::string fragmentCode((std::istreambuf_iterator<char>(fragment)),std::istreambuf_iterator<char>());
+            return createProgram(vertexCode.c_str(),fragmentCode.c_str());
+        }
+        ShaderProgram* createProgram(const char* vertexSh, const char* fragmentSh)
+        {return new ShaderProgram(vertexSh,fragmentSh);}
+};

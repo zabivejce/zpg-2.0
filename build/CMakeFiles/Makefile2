@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jirka/school/ZPG/zpg-2.0
+CMAKE_SOURCE_DIR = /home/jirka/school/S7/ZPG
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jirka/school/ZPG/zpg-2.0/build
+CMAKE_BINARY_DIR = /home/jirka/school/S7/ZPG/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/zpg.dir/clean
 CMakeFiles/zpg.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/zpg.dir/build.make CMakeFiles/zpg.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/zpg.dir/build.make CMakeFiles/zpg.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target zpg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target zpg"
 .PHONY : CMakeFiles/zpg.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/zpg.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jirka/school/S7/ZPG/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/zpg.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jirka/school/S7/ZPG/build/CMakeFiles 0
 .PHONY : CMakeFiles/zpg.dir/rule
 
 # Convenience name for target.
@@ -102,7 +102,7 @@ zpg: CMakeFiles/zpg.dir/rule
 # codegen rule for target.
 CMakeFiles/zpg.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/zpg.dir/build.make CMakeFiles/zpg.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target zpg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target zpg"
 .PHONY : CMakeFiles/zpg.dir/codegen
 
 # clean rule for target.

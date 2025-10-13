@@ -1,6 +1,6 @@
 CMakeFiles/zpg.dir/src/Model.cpp.o: \
- /home/jirka/school/ZPG/zpg-2.0/src/Model.cpp /usr/include/stdc-predef.h \
- /home/jirka/school/ZPG/zpg-2.0/src/Model.hpp /usr/include/GL/glew.h \
+ /home/jirka/school/S7/ZPG/src/Model.cpp /usr/include/stdc-predef.h \
+ /home/jirka/school/S7/ZPG/src/Model.hpp /usr/include/GL/glew.h \
  /usr/include/c++/14/cstddef \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \

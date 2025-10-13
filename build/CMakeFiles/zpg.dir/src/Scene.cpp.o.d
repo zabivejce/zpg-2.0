@@ -1,8 +1,8 @@
 CMakeFiles/zpg.dir/src/Scene.cpp.o: \
- /home/jirka/school/ZPG/zpg-2.0/src/Scene.cpp /usr/include/stdc-predef.h \
- /home/jirka/school/ZPG/zpg-2.0/src/Scene.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Model.hpp /usr/include/GL/glew.h \
+ /home/jirka/school/S7/ZPG/src/Scene.cpp /usr/include/stdc-predef.h \
+ /home/jirka/school/S7/ZPG/src/Scene.hpp \
+ /home/jirka/school/S7/ZPG/src/DrawableObject.hpp \
+ /home/jirka/school/S7/ZPG/src/Model.hpp /usr/include/GL/glew.h \
  /usr/include/c++/14/cstddef \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
@@ -257,8 +257,8 @@ CMakeFiles/zpg.dir/src/Scene.cpp.o: \
  /usr/include/glm/ext/vector_uint1_sized.hpp /usr/include/c++/14/cstring \
  /usr/include/string.h /usr/include/strings.h \
  /usr/include/glm/gtc/type_ptr.inl \
- /home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Camera.hpp /usr/include/glm/fwd.hpp \
+ /home/jirka/school/S7/ZPG/src/ShaderProgram.hpp \
+ /home/jirka/school/S7/ZPG/src/Camera.hpp /usr/include/glm/fwd.hpp \
  /usr/include/c++/14/vector /usr/include/c++/14/bits/allocator.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++allocator.h \
  /usr/include/c++/14/bits/new_allocator.h \
@@ -282,13 +282,12 @@ CMakeFiles/zpg.dir/src/Scene.cpp.o: \
  /usr/include/c++/14/bits/ranges_util.h \
  /usr/include/c++/14/bits/ranges_base.h \
  /usr/include/c++/14/bits/max_size_type.h /usr/include/c++/14/numbers \
- /home/jirka/school/ZPG/zpg-2.0/src/Observer.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Subject.hpp \
- /usr/include/c++/14/iostream /usr/include/c++/14/ostream \
- /usr/include/c++/14/ios /usr/include/c++/14/iosfwd \
- /usr/include/c++/14/bits/stringfwd.h /usr/include/c++/14/bits/postypes.h \
- /usr/include/c++/14/cwchar /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
+ /home/jirka/school/S7/ZPG/src/Observer.hpp \
+ /home/jirka/school/S7/ZPG/src/Subject.hpp /usr/include/c++/14/iostream \
+ /usr/include/c++/14/ostream /usr/include/c++/14/ios \
+ /usr/include/c++/14/iosfwd /usr/include/c++/14/bits/stringfwd.h \
+ /usr/include/c++/14/bits/postypes.h /usr/include/c++/14/cwchar \
+ /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
@@ -361,7 +360,7 @@ CMakeFiles/zpg.dir/src/Scene.cpp.o: \
  /usr/include/c++/14/bits/basic_ios.tcc \
  /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
  /usr/include/c++/14/bits/istream.tcc /usr/include/c++/14/stdlib.h \
- /home/jirka/school/ZPG/zpg-2.0/src/TransformationComponent.hpp \
+ /home/jirka/school/S7/ZPG/src/TransformationComponent.hpp \
  /usr/include/glm/glm.hpp /usr/include/c++/14/climits \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \

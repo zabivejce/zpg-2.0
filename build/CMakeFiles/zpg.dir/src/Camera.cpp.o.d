@@ -1,6 +1,6 @@
 CMakeFiles/zpg.dir/src/Camera.cpp.o: \
- /home/jirka/school/ZPG/zpg-2.0/src/Camera.cpp /usr/include/stdc-predef.h \
- /home/jirka/school/ZPG/zpg-2.0/src/Camera.hpp /usr/include/GL/glew.h \
+ /home/jirka/school/S7/ZPG/src/Camera.cpp /usr/include/stdc-predef.h \
+ /home/jirka/school/S7/ZPG/src/Camera.hpp /usr/include/GL/glew.h \
  /usr/include/c++/14/cstddef \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
@@ -278,13 +278,12 @@ CMakeFiles/zpg.dir/src/Camera.cpp.o: \
  /usr/include/c++/14/bits/ranges_util.h \
  /usr/include/c++/14/bits/ranges_base.h \
  /usr/include/c++/14/bits/max_size_type.h /usr/include/c++/14/numbers \
- /home/jirka/school/ZPG/zpg-2.0/src/Observer.hpp \
- /home/jirka/school/ZPG/zpg-2.0/src/Subject.hpp \
- /usr/include/c++/14/iostream /usr/include/c++/14/ostream \
- /usr/include/c++/14/ios /usr/include/c++/14/iosfwd \
- /usr/include/c++/14/bits/stringfwd.h /usr/include/c++/14/bits/postypes.h \
- /usr/include/c++/14/cwchar /usr/include/wchar.h \
- /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
+ /home/jirka/school/S7/ZPG/src/Observer.hpp \
+ /home/jirka/school/S7/ZPG/src/Subject.hpp /usr/include/c++/14/iostream \
+ /usr/include/c++/14/ostream /usr/include/c++/14/ios \
+ /usr/include/c++/14/iosfwd /usr/include/c++/14/bits/stringfwd.h \
+ /usr/include/c++/14/bits/postypes.h /usr/include/c++/14/cwchar \
+ /usr/include/wchar.h /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \

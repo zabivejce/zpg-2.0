@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jirka/school/ZPG/zpg-2.0
+CMAKE_SOURCE_DIR = /home/jirka/school/S7/ZPG
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jirka/school/ZPG/zpg-2.0/build
+CMAKE_BINARY_DIR = /home/jirka/school/S7/ZPG/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/zpg.dir/depend.make
@@ -73,102 +73,102 @@ CMakeFiles/zpg.dir/codegen:
 .PHONY : CMakeFiles/zpg.dir/codegen
 
 CMakeFiles/zpg.dir/src/App.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/App.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/App.cpp
+CMakeFiles/zpg.dir/src/App.cpp.o: /home/jirka/school/S7/ZPG/src/App.cpp
 CMakeFiles/zpg.dir/src/App.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/zpg.dir/src/App.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/App.cpp.o -MF CMakeFiles/zpg.dir/src/App.cpp.o.d -o CMakeFiles/zpg.dir/src/App.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/App.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/zpg.dir/src/App.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/App.cpp.o -MF CMakeFiles/zpg.dir/src/App.cpp.o.d -o CMakeFiles/zpg.dir/src/App.cpp.o -c /home/jirka/school/S7/ZPG/src/App.cpp
 
 CMakeFiles/zpg.dir/src/App.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/App.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/App.cpp > CMakeFiles/zpg.dir/src/App.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/App.cpp > CMakeFiles/zpg.dir/src/App.cpp.i
 
 CMakeFiles/zpg.dir/src/App.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/App.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/App.cpp -o CMakeFiles/zpg.dir/src/App.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/App.cpp -o CMakeFiles/zpg.dir/src/App.cpp.s
 
 CMakeFiles/zpg.dir/src/Camera.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/Camera.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/Camera.cpp
+CMakeFiles/zpg.dir/src/Camera.cpp.o: /home/jirka/school/S7/ZPG/src/Camera.cpp
 CMakeFiles/zpg.dir/src/Camera.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/zpg.dir/src/Camera.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/Camera.cpp.o -MF CMakeFiles/zpg.dir/src/Camera.cpp.o.d -o CMakeFiles/zpg.dir/src/Camera.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/zpg.dir/src/Camera.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/Camera.cpp.o -MF CMakeFiles/zpg.dir/src/Camera.cpp.o.d -o CMakeFiles/zpg.dir/src/Camera.cpp.o -c /home/jirka/school/S7/ZPG/src/Camera.cpp
 
 CMakeFiles/zpg.dir/src/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/Camera.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/Camera.cpp > CMakeFiles/zpg.dir/src/Camera.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/Camera.cpp > CMakeFiles/zpg.dir/src/Camera.cpp.i
 
 CMakeFiles/zpg.dir/src/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/Camera.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/Camera.cpp -o CMakeFiles/zpg.dir/src/Camera.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/Camera.cpp -o CMakeFiles/zpg.dir/src/Camera.cpp.s
 
 CMakeFiles/zpg.dir/src/DrawableObject.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/DrawableObject.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.cpp
+CMakeFiles/zpg.dir/src/DrawableObject.cpp.o: /home/jirka/school/S7/ZPG/src/DrawableObject.cpp
 CMakeFiles/zpg.dir/src/DrawableObject.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/zpg.dir/src/DrawableObject.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/DrawableObject.cpp.o -MF CMakeFiles/zpg.dir/src/DrawableObject.cpp.o.d -o CMakeFiles/zpg.dir/src/DrawableObject.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/zpg.dir/src/DrawableObject.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/DrawableObject.cpp.o -MF CMakeFiles/zpg.dir/src/DrawableObject.cpp.o.d -o CMakeFiles/zpg.dir/src/DrawableObject.cpp.o -c /home/jirka/school/S7/ZPG/src/DrawableObject.cpp
 
 CMakeFiles/zpg.dir/src/DrawableObject.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/DrawableObject.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.cpp > CMakeFiles/zpg.dir/src/DrawableObject.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/DrawableObject.cpp > CMakeFiles/zpg.dir/src/DrawableObject.cpp.i
 
 CMakeFiles/zpg.dir/src/DrawableObject.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/DrawableObject.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/DrawableObject.cpp -o CMakeFiles/zpg.dir/src/DrawableObject.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/DrawableObject.cpp -o CMakeFiles/zpg.dir/src/DrawableObject.cpp.s
 
 CMakeFiles/zpg.dir/src/Model.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/Model.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/Model.cpp
+CMakeFiles/zpg.dir/src/Model.cpp.o: /home/jirka/school/S7/ZPG/src/Model.cpp
 CMakeFiles/zpg.dir/src/Model.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/zpg.dir/src/Model.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/Model.cpp.o -MF CMakeFiles/zpg.dir/src/Model.cpp.o.d -o CMakeFiles/zpg.dir/src/Model.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/Model.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/zpg.dir/src/Model.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/Model.cpp.o -MF CMakeFiles/zpg.dir/src/Model.cpp.o.d -o CMakeFiles/zpg.dir/src/Model.cpp.o -c /home/jirka/school/S7/ZPG/src/Model.cpp
 
 CMakeFiles/zpg.dir/src/Model.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/Model.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/Model.cpp > CMakeFiles/zpg.dir/src/Model.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/Model.cpp > CMakeFiles/zpg.dir/src/Model.cpp.i
 
 CMakeFiles/zpg.dir/src/Model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/Model.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/Model.cpp -o CMakeFiles/zpg.dir/src/Model.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/Model.cpp -o CMakeFiles/zpg.dir/src/Model.cpp.s
 
 CMakeFiles/zpg.dir/src/Scene.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/Scene.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/Scene.cpp
+CMakeFiles/zpg.dir/src/Scene.cpp.o: /home/jirka/school/S7/ZPG/src/Scene.cpp
 CMakeFiles/zpg.dir/src/Scene.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/zpg.dir/src/Scene.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/Scene.cpp.o -MF CMakeFiles/zpg.dir/src/Scene.cpp.o.d -o CMakeFiles/zpg.dir/src/Scene.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/zpg.dir/src/Scene.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/Scene.cpp.o -MF CMakeFiles/zpg.dir/src/Scene.cpp.o.d -o CMakeFiles/zpg.dir/src/Scene.cpp.o -c /home/jirka/school/S7/ZPG/src/Scene.cpp
 
 CMakeFiles/zpg.dir/src/Scene.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/Scene.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/Scene.cpp > CMakeFiles/zpg.dir/src/Scene.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/Scene.cpp > CMakeFiles/zpg.dir/src/Scene.cpp.i
 
 CMakeFiles/zpg.dir/src/Scene.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/Scene.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/Scene.cpp -o CMakeFiles/zpg.dir/src/Scene.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/Scene.cpp -o CMakeFiles/zpg.dir/src/Scene.cpp.s
 
 CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.cpp
+CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o: /home/jirka/school/S7/ZPG/src/ShaderProgram.cpp
 CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o -MF CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o.d -o CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o -MF CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o.d -o CMakeFiles/zpg.dir/src/ShaderProgram.cpp.o -c /home/jirka/school/S7/ZPG/src/ShaderProgram.cpp
 
 CMakeFiles/zpg.dir/src/ShaderProgram.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/ShaderProgram.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.cpp > CMakeFiles/zpg.dir/src/ShaderProgram.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/ShaderProgram.cpp > CMakeFiles/zpg.dir/src/ShaderProgram.cpp.i
 
 CMakeFiles/zpg.dir/src/ShaderProgram.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/ShaderProgram.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/ShaderProgram.cpp -o CMakeFiles/zpg.dir/src/ShaderProgram.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/ShaderProgram.cpp -o CMakeFiles/zpg.dir/src/ShaderProgram.cpp.s
 
 CMakeFiles/zpg.dir/src/main.cpp.o: CMakeFiles/zpg.dir/flags.make
-CMakeFiles/zpg.dir/src/main.cpp.o: /home/jirka/school/ZPG/zpg-2.0/src/main.cpp
+CMakeFiles/zpg.dir/src/main.cpp.o: /home/jirka/school/S7/ZPG/src/main.cpp
 CMakeFiles/zpg.dir/src/main.cpp.o: CMakeFiles/zpg.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/zpg.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/main.cpp.o -MF CMakeFiles/zpg.dir/src/main.cpp.o.d -o CMakeFiles/zpg.dir/src/main.cpp.o -c /home/jirka/school/ZPG/zpg-2.0/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/zpg.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/zpg.dir/src/main.cpp.o -MF CMakeFiles/zpg.dir/src/main.cpp.o.d -o CMakeFiles/zpg.dir/src/main.cpp.o -c /home/jirka/school/S7/ZPG/src/main.cpp
 
 CMakeFiles/zpg.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/zpg.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/ZPG/zpg-2.0/src/main.cpp > CMakeFiles/zpg.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jirka/school/S7/ZPG/src/main.cpp > CMakeFiles/zpg.dir/src/main.cpp.i
 
 CMakeFiles/zpg.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/zpg.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/ZPG/zpg-2.0/src/main.cpp -o CMakeFiles/zpg.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jirka/school/S7/ZPG/src/main.cpp -o CMakeFiles/zpg.dir/src/main.cpp.s
 
 # Object files for target zpg
 zpg_OBJECTS = \
@@ -197,7 +197,7 @@ zpg: /usr/lib/x86_64-linux-gnu/libGL.so
 zpg: /usr/lib/x86_64-linux-gnu/libGLEW.so
 zpg: /usr/lib/libSOIL.so
 zpg: CMakeFiles/zpg.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable zpg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jirka/school/S7/ZPG/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable zpg"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zpg.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -209,6 +209,6 @@ CMakeFiles/zpg.dir/clean:
 .PHONY : CMakeFiles/zpg.dir/clean
 
 CMakeFiles/zpg.dir/depend:
-	cd /home/jirka/school/ZPG/zpg-2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jirka/school/ZPG/zpg-2.0 /home/jirka/school/ZPG/zpg-2.0 /home/jirka/school/ZPG/zpg-2.0/build /home/jirka/school/ZPG/zpg-2.0/build /home/jirka/school/ZPG/zpg-2.0/build/CMakeFiles/zpg.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/jirka/school/S7/ZPG/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jirka/school/S7/ZPG /home/jirka/school/S7/ZPG /home/jirka/school/S7/ZPG/build /home/jirka/school/S7/ZPG/build /home/jirka/school/S7/ZPG/build/CMakeFiles/zpg.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/zpg.dir/depend
 
