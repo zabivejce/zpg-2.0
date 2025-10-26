@@ -2,7 +2,6 @@
 #include "DrawableObject.hpp"
 #include "Camera.hpp"
 #include "ShaderProgram.hpp"
-#include "Light.hpp"
 
 #include <vector>
 class Scene

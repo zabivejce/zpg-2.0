@@ -13,6 +13,7 @@ void DrawableObject::draw(Camera* camera)
     shader->setUniform("model", M);
     shader->setUniform("view",camera->getView());
     shader->setUniform("projection",camera->getProjection());
+    shader->setLights(lights);
     model->drawModel();
     shader->resetProgram();
 }

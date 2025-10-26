@@ -54,26 +54,29 @@ void App::init()
 void App::createShaders()
 {
 	shCr = new ShaderCreator();
-	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/defaultVertex.glsl","../src/shaders/defaultFragment.glsl"));
+	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/default.vert","../src/shaders/default.frag"));
+	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/phong.vert","../src/shaders/phong.frag"));
 }
 
 void App::createScenes()
 {
-	scenes.emplace_back(new Scene(shaders));
+	lights.emplace_back(new Light(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
+	lights.emplace_back(new Light(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
+	scenes.emplace_back(new Scene(shaders,lights));
 
-	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0],new TransformationComposite({new Translation(glm::vec3(0,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
-	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0],new TransformationComposite({new Translation(glm::vec3(1,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))})));
-	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))})));
-	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
+	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
+	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))})));
+	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
+	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))})));
 	
 	const int space = 5, size = 8;
-	scenes.emplace_back(new Scene(shaders));
+	scenes.emplace_back(new Scene(shaders,lights));
 	for(int i = 0 ; i < size ; i++)
 	{
 		for(int j = 0 ; j < size ; j++)
 		{
-			scenes[1]->addObject(new DrawableObject(new Model(tree,sizeof(tree)), shaders[0],new TransformationComposite({new Translation(glm::vec3(i * space, 0.0f, j * space))})));
-			scenes[1]->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[0], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
+			scenes[1]->addObject(new DrawableObject(new Model(tree,sizeof(tree)), shaders[1],new TransformationComposite({new Translation(glm::vec3(i * space, 0.0f, j * space))})));
+			scenes[1]->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[1], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
 		}
 	}
 }
@@ -84,8 +87,8 @@ void App::run()
 	while(!glfwWindowShouldClose(window)){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		scenes[0]->drawScene();
-		scenes[0]->getCamnera()->controls(window);
+		scenes[1]->drawScene();
+		scenes[1]->getCamnera()->controls(window);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);

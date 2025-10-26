@@ -3,15 +3,15 @@ class Light
 {
     private:
         glm::vec3 position;
-        glm::vec3 dimness;
+        glm::vec3 attenuation;
     public:
-        Light(glm::vec3 position, glm::vec3 dimness)
+        Light(glm::vec3 position, glm::vec3 attenuation)
         {
             this->position = position;
-            this->dimness - dimness;
+            this->attenuation = attenuation;
         }
         glm::vec3 getPosition()
         {return position;}
-        glm::vec3 getDimness()
-        {return dimness;}
+        glm::vec3 getAttenuation()
+        {return attenuation;}
 };

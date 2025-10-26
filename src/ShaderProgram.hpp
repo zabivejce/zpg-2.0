@@ -2,6 +2,8 @@
 
 #include "Camera.hpp"
 #include "Subject.hpp"
+#include "Light.hpp"
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <GL/gl.h>
@@ -35,4 +37,5 @@ class ShaderProgram : public Observer
         void setUniform(const char* name, glm::mat4 mat);
         void setUniform(const char* name, int var);
         void setUniform(const char* name, glm::vec3 matrix);
+        void setLights(std::vector<Light*> lights);
 };

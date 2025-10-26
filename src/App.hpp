@@ -33,6 +33,7 @@ class App{
         ShaderCreator* shCr;
         std::vector<ShaderProgram*> shaders;
         std::vector<Scene*> scenes;
+        std::vector<Light*> lights;
 
     public:
         App();

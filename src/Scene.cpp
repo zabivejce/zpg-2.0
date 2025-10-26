@@ -10,6 +10,7 @@ Scene::Scene(std::vector<ShaderProgram*>& shaders,std::vector<Light*>& lights)
 void Scene::addObject(DrawableObject* obj)
 {
     objects.emplace_back(obj);
+    obj->setLights(lights);
 }
 
 void Scene::drawScene()
