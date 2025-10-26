@@ -12,7 +12,7 @@
 #include <vector>
 
 #include "ShaderProgram.hpp"
-#include "ShaderLoader.hpp"
+#include "ShaderCreator.hpp"
 #include "Model.hpp"
 #include "DrawableObject.hpp"
 #include "Scene.hpp"
@@ -30,7 +30,7 @@
 class App{
     private:
     	GLFWwindow* window;
-        ShaderLoader* shLo;
+        ShaderCreator* shCr;
         std::vector<ShaderProgram*> shaders;
         std::vector<Scene*> scenes;
 

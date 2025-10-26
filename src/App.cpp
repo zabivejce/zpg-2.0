@@ -53,8 +53,8 @@ void App::init()
 
 void App::createShaders()
 {
-	shLo = new ShaderLoader();
-	shaders.emplace_back(shLo->createProgramFromFiles("../src/shaders/defaultVertex.glsl","../src/shaders/defaultFragment.glsl"));
+	shCr = new ShaderCreator();
+	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/defaultVertex.glsl","../src/shaders/defaultFragment.glsl"));
 }
 
 void App::createScenes()

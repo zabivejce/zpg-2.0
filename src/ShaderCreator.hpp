@@ -3,7 +3,7 @@
 #include <iostream>
 #include "fstream"
 #include <string>
-class ShaderLoader
+class ShaderCreator
 {
     private:
     public:
