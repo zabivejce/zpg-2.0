@@ -60,8 +60,8 @@ void App::createShaders()
 
 void App::createScenes()
 {
-	lights.emplace_back(new Light(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
-	lights.emplace_back(new Light(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
+	lights.emplace_back(new Light(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
+	//lights.emplace_back(new Light(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
 	scenes.emplace_back(new Scene(shaders,lights));
 
 	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
@@ -87,8 +87,8 @@ void App::run()
 	while(!glfwWindowShouldClose(window)){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		scenes[1]->drawScene();
-		scenes[1]->getCamnera()->controls(window);
+		scenes[0]->drawScene();
+		scenes[0]->getCamnera()->controls(window);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);
