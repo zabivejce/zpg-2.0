@@ -1,0 +1,5 @@
+class SpotLight
+{
+    private:
+    public:
+};

@@ -19,6 +19,10 @@ Model::Model(const float* pts, int arrS)
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+Model::Model(const char* mdlPath)
+{
+
+}
 void Model::drawModel()
 {
     glBindVertexArray(VAO);

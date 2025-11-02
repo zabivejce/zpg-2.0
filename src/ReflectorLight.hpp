@@ -1,0 +1,5 @@
+class ReflectorLight
+{
+    private:
+    public:
+};

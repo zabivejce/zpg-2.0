@@ -1,0 +1,5 @@
+class FlashLight
+{
+    private:
+    public:
+};
