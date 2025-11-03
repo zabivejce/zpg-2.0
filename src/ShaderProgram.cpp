@@ -1,8 +1,7 @@
 #include "ShaderProgram.hpp"
-#include <cstdlib>
-#include <glm/gtc/type_ptr.hpp>
-#include <iostream>
-#include <sstream>
+#include "DirectionLight.hpp"
+#include "PointLight.hpp"
+#include "SpotLight.hpp"
 
 ShaderProgram::ShaderProgram(const char* vertS, const char* fragS)
 {
@@ -64,26 +63,83 @@ void ShaderProgram::setLights(std::vector<Light*> lights)
     else
         std::cout<< "did not set uniform\n";
 
-    //std::cout << lights.size() << std::endl;
-    for(int i = 0; i < lights.size();++i)
+    for(int i = 0; i < (int)lights.size();++i)
     {
         std::stringstream ss;
         std::string formated;
-
-        ss << "lights[" << i << "].position";
-        formated = ss.str();
-        GLint lightPosUni = glGetUniformLocation(Id,formated.c_str());
-        if(lightPosUni != -1)
-            glUniform3fv(lightPosUni, 1, glm::value_ptr(lights[i]->getPosition()));
-        else
-            std::cout << ":)\n";
-        ss = std::stringstream();
-        ss << "lights[" << i << "].attenuation";
-        formated = ss.str();
-        GLint lightDiffUni = glGetUniformLocation(Id, formated.c_str());
-        if(lightDiffUni != -1)
-            glUniform3fv(lightDiffUni, 1, glm::value_ptr(lights[i]->getAttenuation()));
-        else
-            std::cout << ":)\n";
+        switch (lights[i]->getType())
+        {
+            case 1:     //pointLight
+            {
+                PointLight* light = static_cast<PointLight*>(lights[i]);
+                ss << "lights[" << i << "].position";
+                formated = ss.str();
+                GLint lightPosUni = glGetUniformLocation(Id,formated.c_str());
+                if(lightPosUni != -1)
+                    glUniform3fv(lightPosUni, 1, glm::value_ptr(light->getPosition()));
+                else
+                    std::cout << ":)\n";
+                ss = std::stringstream();
+                ss << "lights[" << i << "].attenuation";
+                formated = ss.str();
+                GLint lightAttUni = glGetUniformLocation(Id, formated.c_str());
+                if(lightAttUni != -1)
+                    glUniform3fv(lightAttUni, 1, glm::value_ptr(light->getAttenuation()));
+                else
+                    std::cout << ":)\n";
+                ss = std::stringstream();
+                ss << "lights[" << i << "].type";
+                formated = ss.str();
+                GLint lightTypeUni = glGetUniformLocation(Id, formated.c_str());
+                if(lightTypeUni != 1)
+                    glUniform1i(lightTypeUni, light->getType());
+                else
+                    std::cout << ":)\n";
+                break;
+            }
+            case 2:     //directionLight
+            {
+                DirectionLight* light = static_cast<DirectionLight*>(lights[i]);
+                ss << "lights[" << i << "].direction";
+                formated = ss.str();
+                GLint lightDirUni = glGetUniformLocation(Id,formated.c_str());
+                glUniform3fv(lightDirUni,1,glm::value_ptr(light->getDirection()));
+                ss = std::stringstream();
+                ss << "lights[" << i << "].type";
+                formated = ss.str();
+                GLint lightTypeUni = glGetUniformLocation(Id, formated.c_str());
+                glUniform1i(lightTypeUni, light->getType());
+                break;
+            }
+            case 3:     //spotLight
+            {
+                SpotLight* light = static_cast<SpotLight*>(lights[i]);
+                ss << "lights[" << i << "].direction";
+                formated= ss.str();
+                GLint lightDirUni = glGetUniformLocation(Id, formated.c_str());
+                glUniform3fv(lightDirUni,1,glm::value_ptr(light->getDirection()));
+                ss = std::stringstream();
+                ss << "lights[" << i << "].type";
+                formated = ss.str();
+                GLint lightTypeUni = glGetUniformLocation(Id, formated.c_str());
+                glUniform1i(lightTypeUni, light->getType());
+                ss = std::stringstream();
+                ss << "lights[" << i << "].position";
+                formated = ss.str();
+                GLint lightPosUni = glGetUniformLocation(Id, formated.c_str());
+                glUniform3fv(lightPosUni, 1, glm::value_ptr(light->getPosition()));
+                ss = std::stringstream();
+                ss << "lights[" << i << "].attenuation";
+                formated = ss.str();
+                GLint lightAttUni = glGetUniformLocation(Id, formated.c_str());
+                glUniform3fv(lightAttUni, 1, glm::value_ptr(light->getAttenuation()));
+                ss = std::stringstream();
+                ss << "lights[" << i << "].alpha";
+                formated = ss.str();
+                GLint angleUni = glGetUniformLocation(Id, formated.c_str());
+                glUniform1f(angleUni, light->getAngle());
+                break;
+            }
+        }
     }
 }

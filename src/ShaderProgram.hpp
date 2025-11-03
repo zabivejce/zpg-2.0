@@ -3,6 +3,9 @@
 #include "Camera.hpp"
 #include "Subject.hpp"
 #include "Light.hpp"
+#include "PointLight.hpp"
+#include "SpotLight.hpp"
+#include "DirectionLight.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -14,10 +17,9 @@
 #include <glm/gtc/matrix_transform.hpp> // glm::translate, glm::rotate, glm::scale, glm::perspective
 #include <glm/gtc/type_ptr.hpp> // glm::value_ptr
 
-//proc mam delat screen, kdyz to je doslova v kodu :nerd:
-
 #include <stdlib.h>
 #include <iostream>
+#include <sstream>
 
 #pragma once
 

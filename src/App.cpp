@@ -1,11 +1,16 @@
 #include "App.hpp"
+#include "DirectionLight.hpp"
 #include "DrawableObject.hpp"
+#include "Light.hpp"
 #include "Model.hpp"
+#include "PointLight.hpp"
 #include "Scene.hpp"
 #include "ShaderProgram.hpp"
+#include "SpotLight.hpp"
 #include "TransformationComponent.hpp"
 #include "TransformationComposite.hpp"
 #include "Translation.hpp"
+#include <GLFW/glfw3.h>
 #include <cstddef>
 
 static void error_callback(int error, const char *description) { fputs(description, stderr); }
@@ -60,17 +65,22 @@ void App::createShaders()
 
 void App::createScenes()
 {
-	lights.emplace_back(new Light(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
-	//lights.emplace_back(new Light(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
-	scenes.emplace_back(new Scene(shaders,lights));
+	std::vector<Light*> lights_0;
+	FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
+	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
+	scenes.emplace_back(new Scene(shaders,lights_0));
 
 	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
 	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))})));
 	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))})));
 	scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))})));
-	
+
+
 	const int space = 5, size = 8;
-	scenes.emplace_back(new Scene(shaders,lights));
+	std::vector<Light*> lights_1;
+	lights_1.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
+	lights_1.emplace_back(new PointLight(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
+	scenes.emplace_back(new Scene(shaders,lights_1));
 	for(int i = 0 ; i < size ; i++)
 	{
 		for(int j = 0 ; j < size ; j++)
@@ -79,16 +89,41 @@ void App::createScenes()
 			scenes[1]->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[1], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
 		}
 	}
+
+	std::vector<Light*> lights_2;
+	lights_2.emplace_back(new DirectionLight(glm::vec3(-0.3f,-1.0f,-0.7f)));
+	lights_2.emplace_back(new DirectionLight(glm::vec3(0.7f,1.0f,0.3f)));
+	scenes.emplace_back(new Scene(shaders,lights_2));
+	scenes[2]->addObject(new DrawableObject(new Model("formula1.obj"),shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))})));
+
+	std::vector<Light*> lights_3;
+	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.1f, -1.0f, -0.1f)));
+	scenes.emplace_back(new Scene(shaders,lights_3));
+	scenes[3]->addObject(new DrawableObject(new Model("cube.obj"),shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))})));
 }
 
 void App::run()
 {
+	bool prevKey = false;
+	int nScenes = scenes.size();
+	int activeScene = 0;
 	glEnable(GL_DEPTH_TEST);
 	while(!glfwWindowShouldClose(window)){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
+    	if((glfwGetKey(window,GLFW_KEY_TAB) == GLFW_PRESS) && prevKey == false)
+		{
+			prevKey = true;
+			if(activeScene + 1 == nScenes)
+				activeScene = 0;
+			else
+				++activeScene;
+		}
+		if((glfwGetKey(window, GLFW_KEY_TAB) == GLFW_RELEASE))
+			prevKey = false;
 
-		scenes[0]->drawScene();
-		scenes[0]->getCamnera()->controls(window);
+		scenes[activeScene]->drawScene();
+		scenes[activeScene]->getCamnera()->controls(window);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);

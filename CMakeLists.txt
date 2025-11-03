@@ -34,7 +34,7 @@ endif()
 include_directories(${GLEW_INCLUDE_DIRS} ${SOIL_INCLUDE_DIR})
 
 # Find source files
-file(GLOB_RECURSE SOURCES "src/*.cpp" "src/**/*.cpp")
+file(GLOB_RECURSE SOURCES "src/*.cpp" "src/**/*.cpp" "src/*.cc" "src/**/*.cc")
 
 # Define the executable
 add_executable(zpg ${SOURCES})

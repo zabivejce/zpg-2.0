@@ -8,13 +8,14 @@
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "libs/tiny_obj_loader.h"
+#include <iostream>
+#include "tiny_obj_loader.h"
 
 class Model
 {
     private:
         const float* points;
-        int arrSize;
+        int vertexCount;
         GLuint VAO = 0;
         GLuint VBO = 0;
     public:

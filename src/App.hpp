@@ -18,6 +18,11 @@
 #include "Scene.hpp"
 #include "Translation.hpp"
 #include "Scale.hpp"
+#include "Light.hpp"
+#include "PointLight.hpp"
+#include "DirectionLight.hpp"
+#include "SpotLight.hpp"
+#include "FlashLight.hpp"
 
 #include "models/bushes.hpp"
 #include "models/gift.hpp"
@@ -33,7 +38,7 @@ class App{
         ShaderCreator* shCr;
         std::vector<ShaderProgram*> shaders;
         std::vector<Scene*> scenes;
-        std::vector<Light*> lights;
+        //std::vector<Light*> lights;
 
     public:
         App();
