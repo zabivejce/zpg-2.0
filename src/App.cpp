@@ -13,6 +13,8 @@
 #include <GLFW/glfw3.h>
 #include <cstddef>
 
+//test private git protoze ho nekdo klonoval visco :)
+
 static void error_callback(int error, const char *description) { fputs(description, stderr); }
 
 App::App()
