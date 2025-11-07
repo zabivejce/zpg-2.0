@@ -9,7 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
-#include "tiny_obj_loader.h"
+#include "libs/tiny_obj_loader.h"
 
 class Model
 {
