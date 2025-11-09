@@ -1,6 +1,7 @@
 #version 450 core
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
+layout (location = 2) in vec2 texCoord;
 
 uniform mat4 model;
 uniform mat4 view;
@@ -8,6 +9,7 @@ uniform mat4 projection;
 
 out vec4 ex_worldPosition;
 out vec3 ex_worldNormal;
+out vec2 TexCoord;
 
 void main(void)
 {
@@ -15,4 +17,5 @@ void main(void)
     gl_Position = projection * view * model * vec4(aPos,1.0);
     ex_worldPosition = model * vec4(aPos,1.0f);
     ex_worldNormal = normalMatrix * aNormal;
+    TexCoord = texCoord;
 }

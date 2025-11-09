@@ -1,13 +1,16 @@
 #version 450 core
-#define MAX_LIGHTS 4
+#define MAX_LIGHTS 8
 
 in vec4 ex_worldPosition;
 in vec3 ex_worldNormal;
 out vec4 fragColor;
+in vec2 TexCoord;
 
-uniform vec3 eye = vec3(0.0,0.0,3.0);
+uniform sampler2D texUnit;
+uniform vec3 eye = vec3(0.0,0.0,0.0);
 
 uniform int lightCount;
+uniform int haveTex;
 
 struct Light
 {
@@ -30,7 +33,11 @@ void main (void)
     vec4 sumDiff = vec4(0.0, 0.0, 0.0, 0.0);
     vec4 sumSpec = vec4(0.0, 0.0, 0.0, 0.0);
 
-    vec4 objectColor = vec4 (0.385 ,0.647 ,0.812 ,1.0);
+    vec4 objectColor = vec4(0.0);
+    if(haveTex == 1)
+        objectColor = texture(texUnit,TexCoord);
+    else
+        objectColor = vec4 (0.385 ,0.647 ,0.812 ,1.0);
 
     for(int i = 0; i < lightCount; ++i)
     {
@@ -54,8 +61,8 @@ void main (void)
                 spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), 32);
 
             float diffuse = max(dot(norm,lightDir), 0.0);
-            sumDiff += (diffuse * attenuation) * vec4(1.0,1.0,1.0,1.0);
-            sumSpec += (spec * attenuation) * vec4(1.0,1.0,1.0,1.0);
+            sumDiff += (diffuse * attenuation) * vec4(1.0);
+            sumSpec += (spec * attenuation) * vec4(1.0);
         }
         else if(lights[i].type == 2)    //directionLight
         {
@@ -101,5 +108,5 @@ void main (void)
             }
         }
     }
-    fragColor = ambient + (sumDiff * objectColor) + (sumSpec * vec4(1.0,1.0,1.0,1.0));
+    fragColor = ambient + (sumDiff * objectColor) + (sumSpec * vec4(0.2));
 };

@@ -12,6 +12,7 @@ class Scene
         Camera* camera;
     public:
         Scene(std::vector<ShaderProgram*>& shaders, std::vector<Light*>& lights);
+        Scene(std::vector<ShaderProgram*>& shaders);
         void addObject(DrawableObject* obj);
         void drawScene();
         Camera* getCamnera();

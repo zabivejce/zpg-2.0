@@ -17,6 +17,7 @@
 #include "DrawableObject.hpp"
 #include "Scene.hpp"
 #include "Translation.hpp"
+#include "Rotation.hpp"
 #include "Scale.hpp"
 #include "Light.hpp"
 #include "PointLight.hpp"

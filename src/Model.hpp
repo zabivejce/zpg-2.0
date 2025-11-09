@@ -10,6 +10,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include "libs/tiny_obj_loader.h"
+#include <SOIL/SOIL.h>
 
 class Model
 {
@@ -18,8 +19,14 @@ class Model
         int vertexCount;
         GLuint VAO = 0;
         GLuint VBO = 0;
+        GLuint img;
+        bool haveTex = false;
     public:
         Model(const float* points, int arrSize);
+        Model(const float* pts, int arrS, bool tex);
         Model(const char* mdlPath);
         void drawModel();
+        void setTexture(const char* path);
+        bool doHaveTexture()
+        {return haveTex;}
 };

@@ -2,8 +2,8 @@
 
 Model::Model(const float* pts, int arrS)
 {
-    this->points=pts;
-    this->vertexCount=arrS/6;
+    points=pts;
+    vertexCount=arrS/6;
 
     glGenBuffers(1, &VBO); // generate the VBO
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -17,6 +17,27 @@ Model::Model(const float* pts, int arrS)
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid *)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (GLvoid *)(3*sizeof(float)));
 
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+Model::Model(const float* pts, int arrS, bool tex)
+{
+    points=pts;
+    vertexCount=arrS/8;
+
+    glGenBuffers(1, &VBO); // generate the VBO
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, vertexCount*8, points, GL_STATIC_DRAW);
+
+    glGenVertexArrays(1, &VAO); //generate the VAO
+    glBindVertexArray(VAO); //bind the VAO
+    glEnableVertexAttribArray(0); //enable vertex attributes
+    glEnableVertexAttribArray(1); //enable vertex attributes
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(1); //enable vertex attributes
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(2); //enable vertex attributes
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 Model::Model(const char* mdlPath)
@@ -89,6 +110,21 @@ Model::Model(const char* mdlPath)
 }
 void Model::drawModel()
 {
+    if(haveTex)
+    {
+        glActiveTexture(GL_TEXTURE0);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glBindTexture(GL_TEXTURE_2D, img);
+    }
     glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLES, 0, vertexCount); //mode,first,count
+}
+
+void Model::setTexture(const char* path)
+{
+    img = SOIL_load_OGL_texture(path,SOIL_LOAD_RGBA,SOIL_CREATE_NEW_ID,SOIL_FLAG_INVERT_Y);
+    haveTex = true;
+    glBindTexture(GL_TEXTURE_2D, img);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }

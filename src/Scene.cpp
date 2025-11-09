@@ -6,6 +6,12 @@ Scene::Scene(std::vector<ShaderProgram*>& shaders,std::vector<Light*>& lights)
         camera->registerShader(sh);
     this->lights = lights;
 }
+Scene::Scene(std::vector<ShaderProgram*>& shaders)
+{
+    camera = Camera::getInstance(glm::vec3(0.0f,0.0f,1.0f),glm::vec3(0.0f,0.0f,-1.0f), glm::vec3(0.0f,1.0f,0.0f));
+    for(auto* sh : shaders)
+        camera->registerShader(sh);
+}
 
 void Scene::addObject(DrawableObject* obj)
 {

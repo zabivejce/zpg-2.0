@@ -13,7 +13,11 @@ void DrawableObject::draw(Camera* camera)
     shader->setUniform("model", M);
     shader->setUniform("view",camera->getView());
     shader->setUniform("projection",camera->getProjection());
-    shader->setLights(lights);
+    if(lights.size() > 0)
+        shader->setLights(lights);
+    if(model->doHaveTexture())
+        shader->setUniform("texUnit",0);
+    shader->setUniform("haveTex",model->doHaveTexture());
     model->drawModel();
     shader->resetProgram();
 }

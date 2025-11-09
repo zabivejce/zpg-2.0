@@ -2,6 +2,7 @@
 #include "DirectionLight.hpp"
 #include "PointLight.hpp"
 #include "SpotLight.hpp"
+#include <ostream>
 
 ShaderProgram::ShaderProgram(const char* vertS, const char* fragS)
 {
@@ -36,7 +37,7 @@ void ShaderProgram::setUniform(const char* name, glm::mat4 matrix)
     if (uniformLocation != -1)
         glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
     else
-        std::cout<< "did not set uniform\n";
+        std::cout<< "did not set uniform: " << name << std::endl;
 }
 void ShaderProgram::setUniform(const char* name, int var)
 {
@@ -44,7 +45,7 @@ void ShaderProgram::setUniform(const char* name, int var)
     if (uniformLocation != -1)
         glUniform1i(uniformLocation, var);
     else
-        std::cout<< "did not set uniform\n";
+        std::cout<< "did not set uniform: " << name << std::endl;
 }
 void ShaderProgram::setUniform(const char* name, glm::vec3 matrix)
 {
@@ -52,7 +53,7 @@ void ShaderProgram::setUniform(const char* name, glm::vec3 matrix)
     if (uniformLocation != -1)
         glUniform3fv(uniformLocation, 1, glm::value_ptr(matrix));
     else
-        std::cout<< "did not set uniform\n";
+        std::cout<< "did not set uniform: " << name << std::endl;
 }
 
 void ShaderProgram::setLights(std::vector<Light*> lights)
@@ -61,7 +62,7 @@ void ShaderProgram::setLights(std::vector<Light*> lights)
     if(lightCountUni != -1)
         glUniform1i(lightCountUni, lights.size());
     else
-        std::cout<< "did not set uniform\n";
+        std::cout<< "did not set uniform: lightCount\n";
 
     for(int i = 0; i < (int)lights.size();++i)
     {
