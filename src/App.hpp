@@ -11,6 +11,7 @@
 #include <iostream>
 #include <vector>
 
+#include "Camera.hpp"
 #include "ShaderProgram.hpp"
 #include "ShaderCreator.hpp"
 #include "Model.hpp"
@@ -19,6 +20,7 @@
 #include "Translation.hpp"
 #include "Rotation.hpp"
 #include "Scale.hpp"
+#include "CustomTransformation.hpp"
 #include "Light.hpp"
 #include "PointLight.hpp"
 #include "DirectionLight.hpp"
@@ -39,6 +41,7 @@ class App{
         ShaderCreator* shCr;
         std::vector<ShaderProgram*> shaders;
         std::vector<Scene*> scenes;
+	    int activeScene = 0;
         //std::vector<Light*> lights;
 
     public:
@@ -47,4 +50,8 @@ class App{
         void createShaders();
         void createScenes();
         void run();
+        void removeObjFromActiveScene(int id)
+        {scenes[activeScene]->removeObj(id);}
+        Camera* getCamera()
+        {return scenes[0]->getCamnera();}
 };

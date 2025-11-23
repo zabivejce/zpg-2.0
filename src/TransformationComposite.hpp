@@ -24,4 +24,9 @@ class TransformationComposite : public TransformationComponent
                 model *= tr->getModelMatrix();
             return model;
         }
+        void update(float delta) override
+        {
+            for(auto* i : transformations)
+                i->update(delta);
+        }
 };

@@ -15,5 +15,7 @@ class Scene
         Scene(std::vector<ShaderProgram*>& shaders);
         void addObject(DrawableObject* obj);
         void drawScene();
+        void update(float delta);
+        void removeObj(int id);
         Camera* getCamnera();
 };

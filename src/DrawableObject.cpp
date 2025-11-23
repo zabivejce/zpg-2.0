@@ -1,13 +1,19 @@
 #include "DrawableObject.hpp"
 #include "Camera.hpp"
-DrawableObject::DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr)
+DrawableObject::DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr, int id)
 {
     model = m;
     shader = sp;
     transformation = tr;
+    this->id =id;
 }
 void DrawableObject::draw(Camera* camera)
 {
+    if(id != 0)
+        glStencilFunc(GL_ALWAYS, id, 0xFF);
+    else
+        glStencilFunc(GL_ALWAYS, 0, 0xFF); 
+
     glm::mat4 M = transformation->getModelMatrix();
     shader->setProgram();
     shader->setUniform("model", M);
