@@ -149,71 +149,68 @@ void App::createScenes()
 		}
 	}
 
-	//std::vector<Light*> lights_0;
-	//FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
-	//lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
-	//scenes.emplace_back(new Scene(shaders,lights_0));
+	std::vector<Light*> lights_3;
+	lights_3.emplace_back(new DirectionLight(glm::vec3(0.5,-0.7,0.3)));
+	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5,0.2,-0.3)));
+	scenes.emplace_back(new Scene(shaders,lights_3));
+	Model* hru0268Tex = new Model("hru0268-tex.obj");
+	hru0268Tex->setTexture("../src/textures/grass.png");
+	scenes.back()->addObject(new DrawableObject(hru0268Tex, shaders[1],new TransformationComposite({new Translation(glm::vec3(0))})));
 
-	//scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),1));
-	//scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))}),2));
-	//scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),3));
-	//scenes[0]->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))}),4));
+	std::vector<Light*> lights_4;
+	FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
+	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
+	scenes.emplace_back(new Scene(shaders,lights_4));
+
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),1));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))}),2));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),3));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))}),4));
 
 
-	//const int space = 5, size = 8;
-	//std::vector<Light*> lights_1;
-	//lights_1.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
-	//lights_1.emplace_back(new PointLight(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
-	////lights_1.emplace_back(new DirectionLight(glm::vec3(0.0f,-0.1f,0.0f)));
-	//scenes.emplace_back(new Scene(shaders,lights_1));
-	//Model* plainModel0 = new Model(plain,sizeof(plain),true);
-	//plainModel0->setTexture("../src/textures/grass.png");
-	//scenes[1]->addObject(new DrawableObject(plainModel0,shaders[2],new TransformationComposite({new Translation(glm::vec3(17.5f,0.0f,17.5f)),new Scale(glm::vec3(20.0f))})));
-	//for(int i = 0 ; i < size ; i++)
-	//{
-	//	for(int j = 0 ; j < size ; j++)
-	//	{
-	//		scenes[1]->addObject(new DrawableObject(new Model(tree,sizeof(tree)), shaders[1],new TransformationComposite({new Translation(glm::vec3(i * space, 0.0f, j * space))})));
-	//		scenes[1]->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[1], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
-	//	}
-	//}
+	const int space = 5, size = 8;
+	std::vector<Light*> lights_5;
+	lights_1.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
+	lights_1.emplace_back(new PointLight(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
+	//lights_1.emplace_back(new DirectionLight(glm::vec3(0.0f,-0.1f,0.0f)));
+	scenes.emplace_back(new Scene(shaders,lights_5));
+	Model* plainModel1 = new Model(plain,sizeof(plain),true);
+	plainModel1->setTexture("../src/textures/grass.png");
+	scenes.back()->addObject(new DrawableObject(plainModel1,shaders[2],new TransformationComposite({new Translation(glm::vec3(17.5f,0.0f,17.5f)),new Scale(glm::vec3(20.0f))})));
+	for(int i = 0 ; i < size ; i++)
+	{
+		for(int j = 0 ; j < size ; j++)
+		{
+			scenes.back()->addObject(new DrawableObject(new Model(tree,sizeof(tree)), shaders[1],new TransformationComposite({new Translation(glm::vec3(i * space, 0.0f, j * space))})));
+			scenes.back()->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[1], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
+		}
+	}
 
-	//std::vector<Light*> lights_2;
-	//lights_2.emplace_back(new DirectionLight(glm::vec3(-0.3f,-1.0f,-0.7f)));
-	//lights_2.emplace_back(new DirectionLight(glm::vec3(0.7f,1.0f,0.3f)));
-	//scenes.emplace_back(new Scene(shaders,lights_2));
-	//scenes[2]->addObject(new DrawableObject(new Model("formula1.obj"),shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))})));
+	std::vector<Light*> lights_7;
+	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.7f)));
+	scenes.emplace_back(new Scene(shaders,lights_7));
+	Model* cubeModel0 = new Model("cube.obj");
+	cubeModel0->setTexture("../src/textures/wooden_fence.png");
+	Model* cubeModel1 = new Model("cube.obj");
+	cubeModel1->setTexture("../src/textures/grass.png");
+	DrawableObject* cube0 = new DrawableObject(cubeModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))}));
+	DrawableObject* cube1 = new DrawableObject(cubeModel1,shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,3.0f))}));
+	scenes.back()->addObject(cube0);
+	scenes.back()->addObject(cube1);
 
-	//std::vector<Light*> lights_3;
-	//lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.7f)));
-	//scenes.emplace_back(new Scene(shaders,lights_3));
-	//Model* cubeModel0 = new Model("cube.obj");
-	//cubeModel0->setTexture("../src/textures/wooden_fence.png");
-	//Model* cubeModel1 = new Model("cube.obj");
-	//cubeModel1->setTexture("../src/textures/grass.png");
-	//DrawableObject* cube0 = new DrawableObject(cubeModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))}));
-	//DrawableObject* cube1 = new DrawableObject(cubeModel1,shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,3.0f))}));
-	//scenes[3]->addObject(cube0);
-	//scenes[3]->addObject(cube1);
-
-	//scenes.emplace_back(new Scene(shaders));
-	//Model* plainModel1 = new Model(plain,sizeof(plain),true);
-	//plainModel1->setTexture("../src/textures/grass.png");
-	//scenes[4]->addObject(new DrawableObject(plainModel1,shaders[2],new TransformationComposite({new Rotation(glm::vec3(0.0f,0.0f,0.0f))})));
-
-	//std::vector<Light*> lights_3;
-	//lights_3.emplace_back(new DirectionLight(glm::vec3(-0.8f)));
-	//lights_3.emplace_back(new DirectionLight(glm::vec3(0.8f)));
-	//scenes.emplace_back(new Scene(shaders,lights_3));
-	//Model* fiona = new Model("fiona.obj");
-	//Model* shrek = new Model("shrek.obj");
-	//Model* toilet = new Model("toilet.obj");
-	//fiona->setTexture("../src/textures/fiona.png");
-	//shrek->setTexture("../src/textures/shrek.png");
-	//toilet->setTexture("../src/textures/toilet.jpg");
-	//scenes.back()->addObject(new DrawableObject(fiona,shaders[1],new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,0.0f))})));
-	//scenes.back()->addObject(new DrawableObject(shrek,shaders[1],new TransformationComposite({new Translation(glm::vec3(-2.0f,0.0f,0.0f))})));
-	//scenes.back()->addObject(new DrawableObject(toilet,shaders[1],new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,-4.0f))})));
+	std::vector<Light*> lights_8;
+	lights_8.emplace_back(new DirectionLight(glm::vec3(-0.8f)));
+	lights_8.emplace_back(new DirectionLight(glm::vec3(0.8f)));
+	scenes.emplace_back(new Scene(shaders,lights_8));
+	Model* fiona = new Model("fiona.obj");
+	Model* shrek = new Model("shrek.obj");
+	Model* toilet = new Model("toilet.obj");
+	fiona->setTexture("../src/textures/fiona.png");
+	shrek->setTexture("../src/textures/shrek.png");
+	toilet->setTexture("../src/textures/toilet.jpg");
+	scenes.back()->addObject(new DrawableObject(fiona,shaders[1],new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,0.0f))})));
+	scenes.back()->addObject(new DrawableObject(shrek,shaders[1],new TransformationComposite({new Translation(glm::vec3(-2.0f,0.0f,0.0f))})));
+	scenes.back()->addObject(new DrawableObject(toilet,shaders[1],new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,-4.0f))})));
 }
 
 void App::run()
