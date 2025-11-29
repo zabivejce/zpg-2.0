@@ -1,10 +1,11 @@
 #include "DrawableObject.hpp"
 #include "Camera.hpp"
-DrawableObject::DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr, int id)
+DrawableObject::DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr, Material* mat, int id)
 {
     model = m;
     shader = sp;
     transformation = tr;
+    material = mat;
     this->id =id;
 }
 void DrawableObject::draw(Camera* camera)

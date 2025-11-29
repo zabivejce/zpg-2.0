@@ -23,7 +23,11 @@ void Scene::addObject(DrawableObject* obj)
 
 void Scene::drawScene()
 {
+    if(skybox != nullptr)
+        skybox->draw(camera->getProjection(), camera->getView());
+
     camera->matrix(90.0f,0.1f,100.0f);
+
     for(auto* obj : objects)
         obj->draw(camera);
 }

@@ -12,6 +12,13 @@ uniform vec3 eye = vec3(0.0,0.0,0.0);
 uniform int lightCount;
 uniform int haveTex;
 
+struct Material
+{
+    vec3 ra;    //ambient
+    vec3 rd;    //color
+    vec3 rs;    //specular
+};
+
 struct Light
 {
     int type;
@@ -20,11 +27,12 @@ struct Light
     vec3 attenuation;
     float alpha;
 };
+uniform Material material;
 uniform Light lights[MAX_LIGHTS];
 
 void main (void)
 {
-    vec4 ambient = vec4(0.1,0.1,0.1,1.0);
+    vec4 ambient = vec4(0.1,0.1,0.1,1.0) * vec4(material.ra,1.0);
 
     vec3 norm = normalize(ex_worldNormal);
 
@@ -37,7 +45,7 @@ void main (void)
     if(haveTex == 1)
         objectColor = texture(texUnit,TexCoord);
     else
-        objectColor = vec4 (0.385 ,0.647 ,0.812 ,1.0);
+        objectColor = vec4(material.rd ,1.0);
 
     for(int i = 0; i < lightCount; ++i)
     {
@@ -62,7 +70,7 @@ void main (void)
 
             float diffuse = max(dot(norm,lightDir), 0.0);
             sumDiff += (diffuse * attenuation) * vec4(1.0);
-            sumSpec += (spec * attenuation) * vec4(1.0);
+            sumSpec += (spec * attenuation) * vec4(material.rs,1.0);
         }
         else if(lights[i].type == 2)    //directionLight
         {
@@ -79,7 +87,7 @@ void main (void)
                 spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), 32);
 
             sumDiff += diff * objectColor;
-            sumSpec += spec;
+            sumSpec += spec * vec4(material.rs,1.0);
         }
         else if(lights[i].type == 3)    //spotLight
         {
@@ -104,9 +112,9 @@ void main (void)
                     spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), 32);
 
                 sumDiff += diff * objectColor * attenuation;
-                sumSpec += spec * attenuation;
+                sumSpec += spec * attenuation * vec4(material.rs,1.0);
             }
         }
     }
-    fragColor = ambient + (sumDiff * objectColor) + (sumSpec * vec4(0.2));
+    fragColor = ambient + (sumDiff * objectColor) + sumSpec;
 };

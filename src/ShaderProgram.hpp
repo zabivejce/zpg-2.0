@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Camera.hpp"
+#include "Material.hpp"
 #include "Subject.hpp"
 #include "Light.hpp"
 #include "PointLight.hpp"
@@ -40,4 +41,5 @@ class ShaderProgram : public Observer
         void setUniform(const char* name, int var);
         void setUniform(const char* name, glm::vec3 matrix);
         void setLights(std::vector<Light*> lights);
+        void setMaterial(Material* mat);
 };

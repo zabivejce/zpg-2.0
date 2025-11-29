@@ -8,6 +8,7 @@ class SpotLight : public Light
     private:
     protected:
         float angle;
+        bool active = true;
         glm::vec3 position;
         glm::vec3 direction;
         glm::vec3 attenuation;
@@ -29,4 +30,6 @@ class SpotLight : public Light
         {return direction;}
         glm::vec3 getAttenuation()
         {return attenuation;}
+        bool isActive()
+        {return active;}
 };

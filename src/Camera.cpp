@@ -1,5 +1,6 @@
 #include "Camera.hpp"
 #include "Subject.hpp"
+#include <GLFW/glfw3.h>
 
 Camera* Camera::instance = nullptr;
 
@@ -93,6 +94,9 @@ void Camera::controls(GLFWwindow* window)
         yaw += sens;
     if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS)
         yaw -= sens;
+
+    if(glfwGetKey(window, GLFW_KEY_F) == GLFW_RELEASE)
+        flashLight = !flashLight;
 
     glm::vec3 direct;
     direct.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));

@@ -2,6 +2,7 @@
 #include "CustomTransformation.hpp"
 #include "DirectionLight.hpp"
 #include "DrawableObject.hpp"
+#include "Material.hpp"
 #include "MoleDynamicTranslation.hpp"
 #include "Light.hpp"
 #include "Model.hpp"
@@ -122,10 +123,10 @@ void App::createScenes()
 {
 	std::vector<Light*> lights_0;
 	scenes.emplace_back(new Scene(shaders,lights_0));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[3], new TransformationComposite({new Translation(glm::vec3(0))})));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f,.0f,.0f),glm::vec3(1.0f))));
+	//scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
 
-	std::vector<Light*> lights_1;
+	/*std::vector<Light*> lights_1;
 	scenes.emplace_back(new Scene(shaders,lights_1));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new CustomTransformation()})));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
@@ -210,7 +211,7 @@ void App::createScenes()
 	toilet->setTexture("../src/textures/toilet.jpg");
 	scenes.back()->addObject(new DrawableObject(fiona,shaders[1],new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,0.0f))})));
 	scenes.back()->addObject(new DrawableObject(shrek,shaders[1],new TransformationComposite({new Translation(glm::vec3(-2.0f,0.0f,0.0f))})));
-	scenes.back()->addObject(new DrawableObject(toilet,shaders[1],new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,-4.0f))})));
+	scenes.back()->addObject(new DrawableObject(toilet,shaders[1],new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,-4.0f))})));*/
 }
 
 void App::run()

@@ -33,6 +33,8 @@ class Camera : public Subject
 
         float speed = 0.1f, sens = 0.5f;
 
+        bool flashLight = false;
+
     public:
 
         static Camera* instance;
@@ -53,4 +55,6 @@ class Camera : public Subject
         {return eye;}
         glm::vec3 getDirection()
         {return glm::normalize(center - eye);}
+        bool flastStat()
+        {return flashLight;}
 };
