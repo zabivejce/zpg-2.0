@@ -117,26 +117,30 @@ void App::createShaders()
 	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/phong.vert","../src/shaders/phong.frag"));
 	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/plain.vert","../src/shaders/plain.frag"));
 	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/default_w.vert","../src/shaders/default.frag"));
+	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/skybox.vert","../src/shaders/skybox.frag"));
 }
 
 void App::createScenes()
 {
+	std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
 	std::vector<Light*> lights_0;
+	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
 	scenes.emplace_back(new Scene(shaders,lights_0));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f,.0f,.0f),glm::vec3(1.0f))));
+	//scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1], new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,2.0f))}),new Material(glm::vec3(1.0f,0.0f,0.0f),glm::vec3(1.0f,.0f,.0f),glm::vec3(0.2f))));
+	scenes.back()->setSkyBox(faces, shaders.back());
 	//scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
 
 	/*std::vector<Light*> lights_1;
 	scenes.emplace_back(new Scene(shaders,lights_1));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new CustomTransformation()})));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
-
+	*/
 	std::vector<Light*> lights_2;
 	lights_2.emplace_back(new DirectionLight(glm::vec3(0.5f,-0.7,0.3f)));
 	scenes.emplace_back(new Scene(shaders,lights_2));
 	Model* plainModel0 = new Model(plain,sizeof(plain),true);
 	plainModel0->setTexture("../src/textures/grass.png");
-	scenes.back()->addObject(new DrawableObject(plainModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f,0.0f,1.0f)),new Scale(glm::vec3(2.0f))})));
+	scenes.back()->addObject(new DrawableObject(plainModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f,0.0f,1.0f)),new Scale(glm::vec3(2.0f))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f))));
 	int moleCnt = 100;
 	for(int i = 0; i < 3 ; ++i)
 	{
@@ -144,12 +148,12 @@ void App::createScenes()
 		{
 			Model* sphereModel0 = new Model(sphere,sizeof(sphere));
 			TransformationComposite* trc0 = new TransformationComposite({new MoleDynamicTranslation(glm::vec3((float)i,-1.0f,(float)j),glm::vec3((float)i,1.0f,(float)j)),new Scale(glm::vec3(0.2f))});
-			DrawableObject* drwobj0 = new DrawableObject(sphereModel0,shaders[1],trc0,moleCnt);
+			DrawableObject* drwobj0 = new DrawableObject(sphereModel0,shaders[1],trc0,new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f)),moleCnt);
 			scenes.back()->addObject(drwobj0);
 			++moleCnt;
 		}
 	}
-
+	/*
 	std::vector<Light*> lights_3;
 	lights_3.emplace_back(new DirectionLight(glm::vec3(0.5,-0.7,0.3)));
 	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5,0.2,-0.3)));

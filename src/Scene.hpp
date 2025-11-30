@@ -11,7 +11,7 @@ class Scene
         std::vector<DrawableObject*> objects;
         std::vector<Light*> lights;
         Camera* camera;
-        SkyBox* skybox;
+        SkyBox* skybox = nullptr;
     public:
         Scene(std::vector<ShaderProgram*>& shaders, std::vector<Light*>& lights);
         Scene(std::vector<ShaderProgram*>& shaders);

@@ -29,13 +29,13 @@ void SkyBox::draw(glm::mat4 projection, glm::mat4 view)
 {
     shader->setProgram();
     glActiveTexture(GL_TEXTURE0);
-    shader->setUniform("view",view);
+    shader->setUniform("view", glm::mat4(glm::mat3(view)));
     shader->setUniform("projection",projection);
     shader->setUniform("skybox",0);
 
     glDepthMask(GL_FALSE);
     glBindVertexArray(VAO);
-    glBindTexture(GL_TEXTURE_2D, tex);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, tex);
     glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
     glDrawArrays(GL_TRIANGLES,0,108);
     glBindVertexArray(0);
