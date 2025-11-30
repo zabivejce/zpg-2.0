@@ -152,10 +152,12 @@ void ShaderProgram::setMaterial(Material* mat)
     GLint locRa = glGetUniformLocation(Id,"material.ra");
     GLint locRd = glGetUniformLocation(Id,"material.rd");
     GLint locRs = glGetUniformLocation(Id,"material.rs");
+    GLint locPow = glGetUniformLocation(Id,"material.power");
     if(locRa != -1 && locRd != -1 && locRs != -1)
     {
         glUniform3fv(locRa, 1, glm::value_ptr(mat->getRa()));
         glUniform3fv(locRd, 1, glm::value_ptr(mat->getRd()));
         glUniform3fv(locRs, 1, glm::value_ptr(mat->getRs()));
+        glUniform1i(locPow, mat->getPower());
     }
 }

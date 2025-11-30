@@ -18,7 +18,8 @@ void DrawableObject::draw(Camera* camera)
     glm::mat4 M = transformation->getModelMatrix();
     shader->setProgram();
     shader->setUniform("model", M);
-    shader->setMaterial(material);
+    if(material != nullptr)
+        shader->setMaterial(material);
     shader->setUniform("view",camera->getView());
     shader->setUniform("projection",camera->getProjection());
     if(lights.size() > 0)

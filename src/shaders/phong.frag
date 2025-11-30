@@ -17,6 +17,7 @@ struct Material
     vec3 ra;    //ambient
     vec3 rd;    //color
     vec3 rs;    //specular
+    int power;
 };
 
 struct Light
@@ -66,7 +67,7 @@ void main (void)
 
             float spec = 0.0; 
             if(dot(norm,lightDir) >= 0)
-                spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), 32);
+                spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), material.power);
 
             float diffuse = max(dot(norm,lightDir), 0.0);
             sumDiff += (diffuse * attenuation) * vec4(1.0);
@@ -84,7 +85,7 @@ void main (void)
 
             float spec = 0.0;
             if(dot(norm,lightDir) >= 0)
-                spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), 32);
+                spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), material.power);
 
             sumDiff += diff * objectColor;
             sumSpec += spec * vec4(material.rs,1.0);
@@ -109,7 +110,7 @@ void main (void)
                 vec3 reflectDir = reflect(-lightDir, norm);
                 float spec = 0.0;
                 if(dot(norm, lightDir) >= 0.0)
-                    spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), 32);
+                    spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), material.power);
 
                 sumDiff += diff * objectColor * attenuation;
                 sumSpec += spec * attenuation * vec4(material.rs,1.0);

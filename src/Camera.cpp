@@ -13,7 +13,6 @@ Camera::Camera(glm::vec3 eye, glm::vec3 center, glm::vec3 up)
     view = glm::mat4(1.0);
     projection = glm::mat4(1.0);
     width = 800;
-    height = 600;
 }
 
 Camera* Camera::getInstance(glm::vec3 eye, glm::vec3 center, glm::vec3 up)
@@ -95,8 +94,10 @@ void Camera::controls(GLFWwindow* window)
     if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS)
         yaw -= sens;
 
-    if(glfwGetKey(window, GLFW_KEY_F) == GLFW_RELEASE)
-        flashLight = !flashLight;
+    if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS && !lastFlashState)
+        lastFlashState = true;
+    else
+        lastFlashState = false;
 
     glm::vec3 direct;
     direct.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));

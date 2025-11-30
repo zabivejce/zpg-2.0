@@ -6,16 +6,21 @@ class FlashLight : public SpotLight, public Observer
 {
     private:
         Camera* camera;
-        bool active = false;
     public:
         FlashLight(glm::vec3 position, glm::vec3 direction, glm::vec3 attenuation, float angle) : SpotLight(position, direction, attenuation, angle)
-        {camera = nullptr;}
+        {
+            camera = nullptr;
+            active = false;
+        }
         void registerSubject(Subject* subj) override
         {camera = static_cast<Camera*>(subj);}
         void update() override
         {
-            position = camera->getEye();
-            direction = camera->getDirection();
-            active = camera->flastStat();
+            if(camera)
+            {
+                position = camera->getEye();
+                direction = camera->getDirection();
+                active = camera->getFlashStat();
+            }
         }
 };

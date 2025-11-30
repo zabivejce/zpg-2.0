@@ -4,6 +4,7 @@
 #include "TransformationComponent.hpp"
 #include "Camera.hpp"
 #include "Material.hpp"
+#include <cstddef>
 #include <vector>
 class DrawableObject
 {
@@ -15,7 +16,7 @@ class DrawableObject
         Material* material;
         std::vector<Light*> lights;
     public:
-        DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr, Material* mat, int id = 0);
+        DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr, Material* mat = nullptr, int id = 0);
         int getId(){return id;};
         void draw(Camera* camera);
         void setLights(std::vector<Light*> lights)

@@ -123,24 +123,25 @@ void App::createShaders()
 void App::createScenes()
 {
 	std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
-	std::vector<Light*> lights_0;
-	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
-	scenes.emplace_back(new Scene(shaders,lights_0));
-	//scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1], new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,2.0f))}),new Material(glm::vec3(1.0f,0.0f,0.0f),glm::vec3(1.0f,.0f,.0f),glm::vec3(0.2f))));
-	scenes.back()->setSkyBox(faces, shaders.back());
-	//scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
 
-	/*std::vector<Light*> lights_1;
-	scenes.emplace_back(new Scene(shaders,lights_1));
+	//empty scene
+	scenes.emplace_back(new Scene(shaders));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[3], new TransformationComposite({new Translation(glm::vec3(0.0f))})));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
+
+	//custom transformation
+	scenes.emplace_back(new Scene(shaders));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new CustomTransformation()})));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
-	*/
-	std::vector<Light*> lights_2;
-	lights_2.emplace_back(new DirectionLight(glm::vec3(0.5f,-0.7,0.3f)));
-	scenes.emplace_back(new Scene(shaders,lights_2));
+	
+	//placni krtka
+	std::vector<Light*> lights_3;
+	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.5f)));
+	scenes.emplace_back(new Scene(shaders,lights_3));
+	scenes.back()->setSkyBox(faces, shaders.back());
 	Model* plainModel0 = new Model(plain,sizeof(plain),true);
 	plainModel0->setTexture("../src/textures/grass.png");
-	scenes.back()->addObject(new DrawableObject(plainModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f,0.0f,1.0f)),new Scale(glm::vec3(2.0f))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f))));
+	scenes.back()->addObject(new DrawableObject(plainModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f,0.0f,1.0f)),new Scale(glm::vec3(2.0f))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(0.0f),32)));
 	int moleCnt = 100;
 	for(int i = 0; i < 3 ; ++i)
 	{
@@ -148,20 +149,19 @@ void App::createScenes()
 		{
 			Model* sphereModel0 = new Model(sphere,sizeof(sphere));
 			TransformationComposite* trc0 = new TransformationComposite({new MoleDynamicTranslation(glm::vec3((float)i,-1.0f,(float)j),glm::vec3((float)i,1.0f,(float)j)),new Scale(glm::vec3(0.2f))});
-			DrawableObject* drwobj0 = new DrawableObject(sphereModel0,shaders[1],trc0,new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f)),moleCnt);
+			DrawableObject* drwobj0 = new DrawableObject(sphereModel0,shaders[1],trc0,new Material(glm::vec3(0.55f,0.24f,0.0f),glm::vec3(0.55f,0.24f,0.0f),glm::vec3(0.1f),32),moleCnt);
 			scenes.back()->addObject(drwobj0);
 			++moleCnt;
 		}
 	}
-	/*
-	std::vector<Light*> lights_3;
+	std::vector<Light*> lights_4;
 	lights_3.emplace_back(new DirectionLight(glm::vec3(0.5,-0.7,0.3)));
 	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5,0.2,-0.3)));
-	scenes.emplace_back(new Scene(shaders,lights_3));
+	scenes.emplace_back(new Scene(shaders,lights_4));
 	Model* hru0268Tex = new Model("hru0268-tex.obj");
 	hru0268Tex->setTexture("../src/textures/grass.png");
 	scenes.back()->addObject(new DrawableObject(hru0268Tex, shaders[1],new TransformationComposite({new Translation(glm::vec3(0))})));
-
+	/*
 	std::vector<Light*> lights_4;
 	FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
 	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
@@ -172,16 +172,15 @@ void App::createScenes()
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),3));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))}),4));
 
-
-	const int space = 5, size = 8;
+	*/
+	const int space = 7, size = 7;
 	std::vector<Light*> lights_5;
-	lights_1.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
-	lights_1.emplace_back(new PointLight(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
-	//lights_1.emplace_back(new DirectionLight(glm::vec3(0.0f,-0.1f,0.0f)));
+	lights_5.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
+	lights_5.emplace_back(new PointLight(glm::vec3(37.5f,0.0f,37.5f),glm::vec3(1.0,0.1,0.01)));
 	scenes.emplace_back(new Scene(shaders,lights_5));
 	Model* plainModel1 = new Model(plain,sizeof(plain),true);
 	plainModel1->setTexture("../src/textures/grass.png");
-	scenes.back()->addObject(new DrawableObject(plainModel1,shaders[2],new TransformationComposite({new Translation(glm::vec3(17.5f,0.0f,17.5f)),new Scale(glm::vec3(20.0f))})));
+	scenes.back()->addObject(new DrawableObject(plainModel1,shaders[2],new TransformationComposite({new Translation(glm::vec3(17.5f,0.0f,17.5f)),new Scale(glm::vec3(20.0f))}),new Material(glm::vec3(0.0f),glm::vec3(0.0f),glm::vec3(0.2f),32)));
 	for(int i = 0 ; i < size ; i++)
 	{
 		for(int j = 0 ; j < size ; j++)
@@ -190,6 +189,7 @@ void App::createScenes()
 			scenes.back()->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[1], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
 		}
 	}
+	/*
 
 	std::vector<Light*> lights_7;
 	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.7f)));
