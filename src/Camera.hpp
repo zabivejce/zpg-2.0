@@ -17,7 +17,7 @@
 class Camera : public Subject
 {
     private:
-        std::vector<Observer*> shaders;
+        //std::vector<Observer*> shaders;
         glm::vec3 eye;
         glm::vec3 center;
         glm::vec3 up;

@@ -13,6 +13,7 @@ Camera::Camera(glm::vec3 eye, glm::vec3 center, glm::vec3 up)
     view = glm::mat4(1.0);
     projection = glm::mat4(1.0);
     width = 800;
+    height = 600;
 }
 
 Camera* Camera::getInstance(glm::vec3 eye, glm::vec3 center, glm::vec3 up)
@@ -24,7 +25,8 @@ Camera* Camera::getInstance(glm::vec3 eye, glm::vec3 center, glm::vec3 up)
 
 void Camera::registerShader(Observer* shader)
 {
-    shaders.emplace_back(shader);
+    //shaders.emplace_back(shader);
+    this->registerObserver(shader);
 }
 
 void Camera::matrix(float FOV, float nearPlane, float farPlane)
@@ -37,7 +39,7 @@ void Camera::matrix(float FOV, float nearPlane, float farPlane)
 
     projection = glm::perspective(glm::radians(FOV),aRation,nearPlane, farPlane);
 
-    notifyObs();
+    this->notifyObs();
 }
 
 void Camera::resizeWindow(GLFWwindow* window, int width, int height)
@@ -94,10 +96,10 @@ void Camera::controls(GLFWwindow* window)
     if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS)
         yaw -= sens;
 
-    if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS && !lastFlashState)
-        lastFlashState = true;
-    else
-        lastFlashState = false;
+    //if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS && !lastFlashState)
+    //    lastFlashState = true;
+    //else
+    //    lastFlashState = false;
 
     glm::vec3 direct;
     direct.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));

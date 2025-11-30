@@ -27,6 +27,7 @@
 #include "SpotLight.hpp"
 #include "FlashLight.hpp"
 #include "Material.hpp"
+#include "BezierTranslation.hpp"
 
 #include "models/bushes.hpp"
 #include "models/gift.hpp"
