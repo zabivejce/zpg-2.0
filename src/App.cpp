@@ -1,4 +1,5 @@
 #include "App.hpp"
+#include "Camera.hpp"
 #include "CustomTransformation.hpp"
 #include "DirectionLight.hpp"
 #include "DrawableObject.hpp"
@@ -23,6 +24,12 @@
 //test private git protoze ho nekdo klonoval visco :)
 
 static void error_callback(int error, const char *description) { fputs(description, stderr); }
+static void window_size_callback(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+	if(Camera::instance != nullptr)
+		Camera::instance->resizeWindow(window, width, height);
+}
 static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
 	if(action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_LEFT)
@@ -108,6 +115,8 @@ void App::init()
 
 	glfwSetWindowUserPointer(window, this);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
+
+	glfwSetFramebufferSizeCallback(window, window_size_callback);
 }
 
 void App::createShaders()
@@ -118,11 +127,66 @@ void App::createShaders()
 	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/plain.vert","../src/shaders/plain.frag"));
 	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/default_w.vert","../src/shaders/default.frag"));
 	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/skybox.vert","../src/shaders/skybox.frag"));
+	shaders.emplace_back(shCr->createProgramFromFiles("../src/shaders/whisp.vert","../src/shaders/whisp.frag"));
 }
+
+void App::sceneForest()
+{
+	std::vector<Light*> forest_lights;
+	std::vector<PointLight*> whisps_lights;
+	for(int i = 0 ; i < 4 ; ++i)
+	{
+		PointLight* l = new PointLight(glm::vec3(0.0f), glm::vec3(1.0f, 0.5f, 0.05f));
+		forest_lights.emplace_back(l);
+		whisps_lights.emplace_back(l);
+	}
+	FlashLight* fl = new FlashLight(glm::vec3(1.0f));
+	forest_lights.emplace_back(fl);
+
+    scenes.emplace_back(new Scene(shaders, forest_lights));
+
+	fl->registerSubject(scenes.back()->getCamnera());
+
+	DrawableObject* whisp0 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[0], glm::vec3(17.5f,5.0f,17.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
+	DrawableObject* whisp1 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[1], glm::vec3(17.5f,5.0f,52.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
+	DrawableObject* whisp2 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[2], glm::vec3(52.5f,5.0f,17.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
+	DrawableObject* whisp3 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[3], glm::vec3(52.5f,5.0f,52.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
+	scenes.back()->addObject(whisp0);
+	scenes.back()->addObject(whisp1);
+	scenes.back()->addObject(whisp2);
+	scenes.back()->addObject(whisp3);
+
+
+    Model* treeModel = new Model(tree, sizeof(tree));
+    Material* treeMaterial = new Material(glm::vec3(0.0f, 0.03f, 0.0f), glm::vec3(0.5f), glm::vec3(0.0f), 32);
+
+	for(int i = 0 ; i < 10 ; ++i)
+	{
+		for(int j = 0 ; j < 10 ; ++j)
+		{
+			scenes.back()->addObject(new DrawableObject(treeModel, shaders[1], new TransformationComposite({new Translation(glm::vec3(7 * i, 0.0f, 7 * j))}), treeMaterial));
+		}
+	}
+    
+    DrawableObject* floor = new DrawableObject(
+        new Model(plain, sizeof(plain), true),
+        shaders[1],
+        new TransformationComposite({
+            new Translation(glm::vec3(35.0f, 0.0f, 35.0f)),
+            new Scale(glm::vec3(100.0f))
+        }),
+        new Material(glm::vec3(0.03f), glm::vec3(0.5f), glm::vec3(0.0f), 1)
+    );
+    floor->setTexture("../src/textures/grass.png");
+    scenes.back()->addObject(floor);
+}
+
+void App::scenePlanets()
+{}
 
 void App::createScenes()
 {
-	std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
+	/*std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
 
 	//empty scene
 	scenes.emplace_back(new Scene(shaders));
@@ -154,7 +218,7 @@ void App::createScenes()
 			++moleCnt;
 		}
 	}
-	/*
+	
 	std::vector<Light*> lights_4;
 	lights_3.emplace_back(new DirectionLight(glm::vec3(0.5,-0.7,0.3)));
 	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5,0.2,-0.3)));
@@ -171,7 +235,8 @@ void App::createScenes()
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))}),2));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),3));
 	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))}),4));
-	*/
+
+
 	const int space = 7, size = 7;
 	std::vector<Light*> lights_forest;
 	lights_forest.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
@@ -188,7 +253,7 @@ void App::createScenes()
 			scenes.back()->addObject(new DrawableObject(new Model(bushes,sizeof(bushes)),shaders[1], new TransformationComposite({new Translation(glm::vec3(i * space + 1, 0.0f, j * space + 1))})));
 		}
 	}
-	/*
+
 	std::vector<Light*> lights_7;
 	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.7f)));
 	scenes.emplace_back(new Scene(shaders,lights_7));
@@ -214,7 +279,6 @@ void App::createScenes()
 	scenes.back()->addObject(new DrawableObject(fiona,shaders[1],new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,0.0f))})));
 	scenes.back()->addObject(new DrawableObject(shrek,shaders[1],new TransformationComposite({new Translation(glm::vec3(-2.0f,0.0f,0.0f))})));
 	scenes.back()->addObject(new DrawableObject(toilet,shaders[1],new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,-4.0f))})));
-	*/
 
 	std::vector<Light*> lights_formula;
 	lights_formula.emplace_back(new DirectionLight(glm::vec3(-0.5f,-1.0f,-0.5f)));
@@ -234,6 +298,17 @@ void App::createScenes()
 	TransformationComponent* bezierMove = new BezierTranslation(path, 0.5f);
 	TransformationComposite* formulaTransform = new TransformationComposite({bezierMove,new Rotation(glm::vec3(0, -90, 0)),new Scale(glm::vec3(0.1f))});
 	scenes.back()->addObject(new DrawableObject(formulaModel,shaders[1],formulaTransform,new Material(glm::vec3(0.1f), glm::vec3(0.8f, 0.1f, 0.1f), glm::vec3(0.2f), 32)));
+	*/
+	sceneForest();
+
+	//std::vector<Light*> lights_test;
+	//PointLight* whispL = new PointLight(glm::vec3(1.0f),glm::vec3(1.0f, 0.5f, 0.05f));
+	//lights_test.emplace_back(whispL);
+	//scenes.emplace_back(new Scene(shaders,lights_test));
+	//DrawableObject* whisp = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whispL, glm::vec3(0.0f), glm::vec3(5.0f), 1.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
+	//scenes.back()->addObject(whisp);
+	//DrawableObject* treeDO = new DrawableObject(new Model(tree, sizeof(tree)),shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))}), new Material(glm::vec3(0.0f,0.6f,0.0f),glm::vec3(0.8f),glm::vec3(0.0f),32));
+	//scenes.back()->addObject(treeDO);
 }
 
 void App::run()

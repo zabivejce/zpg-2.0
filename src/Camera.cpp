@@ -35,7 +35,7 @@ void Camera::matrix(float FOV, float nearPlane, float farPlane)
     view = glm::lookAt(eye,center,up);
 
     if(height != 0)
-        aRation = width/height;
+        aRation = (float)width/(float)height;
 
     projection = glm::perspective(glm::radians(FOV),aRation,nearPlane, farPlane);
 
@@ -101,6 +101,19 @@ void Camera::controls(GLFWwindow* window)
     //else
     //    lastFlashState = false;
 
+    if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+    {
+        if(!isFPressed)
+        {
+            flashLightOn = !flashLightOn;
+            isFPressed = true;
+            this->notifyObs();
+        }
+    }
+    else
+    {
+        isFPressed = false; // Klávesa byla uvolněna, můžeme znovu přepínat
+    }
     glm::vec3 direct;
     direct.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
     direct.y = sin(glm::radians(pitch));
@@ -108,5 +121,5 @@ void Camera::controls(GLFWwindow* window)
 
     center=glm::normalize(direct) + eye;
 
-    glfwSetFramebufferSizeCallback(window,[](GLFWwindow* window,int width,int height){Camera::instance->resizeWindow(window,width,height);});
+    //glfwSetFramebufferSizeCallback(window,[](GLFWwindow* window,int width,int height){Camera::instance->resizeWindow(window,width,height);});
 }

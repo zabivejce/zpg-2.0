@@ -19,6 +19,8 @@ class DrawableObject
         DrawableObject(Model* m, ShaderProgram* sp, TransformationComponent* tr, Material* mat = nullptr, int id = 0);
         int getId(){return id;};
         void draw(Camera* camera);
+        void setTexture(const char* path)
+        {model->setTexture(path);}
         void setLights(std::vector<Light*> lights)
         {this->lights = lights;}
         void update(float delta)

@@ -7,7 +7,7 @@ class FlashLight : public SpotLight, public Observer
     private:
         Camera* camera;
     public:
-        FlashLight(glm::vec3 position, glm::vec3 direction, glm::vec3 attenuation, float angle) : SpotLight(position, direction, attenuation, angle)
+        FlashLight(glm::vec3 attenuation, glm::vec3 position = glm::vec3(0.0f), glm::vec3 direction = glm::vec3(0.0f), float angle = 0.0f) : SpotLight(position, direction, attenuation, angle)
         {
             camera = nullptr;
             active = false;
@@ -20,7 +20,7 @@ class FlashLight : public SpotLight, public Observer
             {
                 position = camera->getEye();
                 direction = camera->getDirection();
-                active = camera->getFlashStat();
+                active = camera->isFlashOn();
             }
         }
 };

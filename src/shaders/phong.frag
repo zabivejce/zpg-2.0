@@ -33,7 +33,7 @@ uniform Light lights[MAX_LIGHTS];
 
 void main (void)
 {
-    vec4 ambient = vec4(0.1,0.1,0.1,1.0) * vec4(material.ra,1.0);
+    vec4 ambient = vec4(material.ra,1.0);
 
     vec3 norm = normalize(ex_worldNormal);
 

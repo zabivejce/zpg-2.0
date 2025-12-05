@@ -34,7 +34,8 @@ class Camera : public Subject
 
         float speed = 0.1f, sens = 0.5f;
 
-        bool lastFlashState = false;
+        bool flashLightOn = false;
+        bool isFPressed = false;
 
     public:
 
@@ -56,6 +57,6 @@ class Camera : public Subject
         {return eye;}
         glm::vec3 getDirection()
         {return glm::normalize(center - eye);}
-        bool getFlashStat()
-        {return lastFlashState;}
+        bool isFlashOn()
+        {return flashLightOn;}
 };

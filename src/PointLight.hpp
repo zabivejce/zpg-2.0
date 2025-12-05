@@ -18,5 +18,7 @@ class PointLight : public Light
         {return position;}
         glm::vec3 getAttenuation()
         {return attenuation;}
+        void setPosition(glm::vec3 position)
+        {this->position = position;}
 
 };

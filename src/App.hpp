@@ -28,6 +28,7 @@
 #include "FlashLight.hpp"
 #include "Material.hpp"
 #include "BezierTranslation.hpp"
+#include "WhispDynamicTranslation.hpp"
 
 #include "models/bushes.hpp"
 #include "models/gift.hpp"
@@ -52,6 +53,8 @@ class App{
         void createShaders();
         void createScenes();
         void run();
+        void sceneForest();
+        void scenePlanets();
         void removeObjFromActiveScene(int id)
         {scenes[activeScene]->removeObj(id);}
         Camera* getCamera()
