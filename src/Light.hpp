@@ -1,7 +1,7 @@
 #pragma once
 class Light
 {
-    private:
+    protected:
         bool active = true;
     public:
         virtual int getType() = 0;

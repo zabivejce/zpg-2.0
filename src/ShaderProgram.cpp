@@ -36,24 +36,18 @@ void ShaderProgram::setUniform(const char* name, glm::mat4 matrix)
     GLint uniformLocation = glGetUniformLocation(Id, name);
     if (uniformLocation != -1)
         glUniformMatrix4fv(uniformLocation, 1, GL_FALSE, glm::value_ptr(matrix));
-    else
-        std::cout<< "did not set uniform: " << name << std::endl;
 }
 void ShaderProgram::setUniform(const char* name, int var)
 {
     GLint uniformLocation = glGetUniformLocation(Id, name);
     if (uniformLocation != -1)
         glUniform1i(uniformLocation, var);
-    else
-        std::cout<< "did not set uniform: " << name << std::endl;
 }
 void ShaderProgram::setUniform(const char* name, glm::vec3 matrix)
 {
     GLint uniformLocation = glGetUniformLocation(Id, name);
     if (uniformLocation != -1)
         glUniform3fv(uniformLocation, 1, glm::value_ptr(matrix));
-    else
-        std::cout<< "did not set uniform: " << name << std::endl;
 }
 
 void ShaderProgram::setLights(std::vector<Light*> lights)
@@ -61,8 +55,6 @@ void ShaderProgram::setLights(std::vector<Light*> lights)
     GLint lightCountUni = glGetUniformLocation(Id,"lightCount");
     if(lightCountUni != -1)
         glUniform1i(lightCountUni, lights.size());
-    else
-        std::cout<< "did not set uniform: lightCount\n";
 
     for(int i = 0; i < (int)lights.size();++i)
     {
@@ -78,24 +70,18 @@ void ShaderProgram::setLights(std::vector<Light*> lights)
                 GLint lightPosUni = glGetUniformLocation(Id,formated.c_str());
                 if(lightPosUni != -1)
                     glUniform3fv(lightPosUni, 1, glm::value_ptr(light->getPosition()));
-                else
-                    std::cout << ":)\n";
                 ss = std::stringstream();
                 ss << "lights[" << i << "].attenuation";
                 formated = ss.str();
                 GLint lightAttUni = glGetUniformLocation(Id, formated.c_str());
                 if(lightAttUni != -1)
                     glUniform3fv(lightAttUni, 1, glm::value_ptr(light->getAttenuation()));
-                else
-                    std::cout << ":)\n";
                 ss = std::stringstream();
                 ss << "lights[" << i << "].type";
                 formated = ss.str();
                 GLint lightTypeUni = glGetUniformLocation(Id, formated.c_str());
                 if(lightTypeUni != 1)
                     glUniform1i(lightTypeUni, light->getType());
-                else
-                    std::cout << ":)\n";
                 break;
             }
             case 2:     //directionLight

@@ -145,7 +145,7 @@ void App::sceneForest()
 
     scenes.emplace_back(new Scene(shaders, forest_lights));
 
-	fl->registerSubject(scenes.back()->getCamnera());
+	scenes.back()->getCamnera()->registerObserver(fl);
 
 	DrawableObject* whisp0 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[0], glm::vec3(17.5f,5.0f,17.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
 	DrawableObject* whisp1 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[1], glm::vec3(17.5f,5.0f,52.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));

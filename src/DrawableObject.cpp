@@ -22,7 +22,7 @@ void DrawableObject::draw(Camera* camera)
         shader->setMaterial(material);
     shader->setUniform("view",camera->getView());
     shader->setUniform("projection",camera->getProjection());
-    if(lights.size() > 0)
+    if(!lights.empty())
         shader->setLights(lights);
     if(model->doHaveTexture())
         shader->setUniform("texUnit",0);
