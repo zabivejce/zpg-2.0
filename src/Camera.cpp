@@ -88,18 +88,22 @@ void Camera::controls(GLFWwindow* window)
     }
 
     if(glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS)
+    {
         pitch += sens;
+        if(pitch > 89.0f)
+            pitch = 89.0f;
+    }
     if(glfwGetKey(window,GLFW_KEY_DOWN) == GLFW_PRESS)
+    {
         pitch -= sens;
+        if(pitch < -89.0f)
+            pitch = -89.0f;
+    }
     if(glfwGetKey(window,GLFW_KEY_RIGHT) == GLFW_PRESS)
         yaw += sens;
     if(glfwGetKey(window,GLFW_KEY_LEFT) == GLFW_PRESS)
         yaw -= sens;
 
-    //if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS && !lastFlashState)
-    //    lastFlashState = true;
-    //else
-    //    lastFlashState = false;
 
     if(glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
     {

@@ -22,7 +22,7 @@ class FlashLight : public SpotLight, public Observer
                 position = camera->getEye();
                 direction = camera->getDirection();
                 active = camera->isFlashOn();
-                std::cout << active <<std::endl;
+                //std::cout << active <<std::endl;
             }
         }
 };

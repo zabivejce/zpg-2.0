@@ -29,6 +29,7 @@
 #include "Material.hpp"
 #include "BezierTranslation.hpp"
 #include "WhispDynamicTranslation.hpp"
+#include "DynamicRotation.hpp"
 
 #include "models/bushes.hpp"
 #include "models/gift.hpp"
@@ -55,6 +56,7 @@ class App{
         void run();
         void sceneForest();
         void scenePlanets();
+        void sceneMole();
         void removeObjFromActiveScene(int id)
         {scenes[activeScene]->removeObj(id);}
         Camera* getCamera()

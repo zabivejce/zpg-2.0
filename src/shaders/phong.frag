@@ -117,5 +117,6 @@ void main (void)
             }
         }
     }
-    fragColor = ambient + (sumDiff * objectColor) + sumSpec;
+    //fragColor = ambient + (sumDiff * objectColor) + sumSpec;
+    fragColor = (ambient * objectColor) + (sumDiff * objectColor) + sumSpec;
 };

@@ -158,7 +158,7 @@ void App::sceneForest()
 
 
     Model* treeModel = new Model(tree, sizeof(tree));
-    Material* treeMaterial = new Material(glm::vec3(0.0f, 0.03f, 0.0f), glm::vec3(0.5f), glm::vec3(0.0f), 32);
+    Material* treeMaterial = new Material(glm::vec3(0.0f, 0.03f, 0.0f), glm::vec3(0.0f,0.5f,0.0f), glm::vec3(0.0f), 32);
 
 	for(int i = 0 ; i < 10 ; ++i)
 	{
@@ -182,26 +182,69 @@ void App::sceneForest()
 }
 
 void App::scenePlanets()
-{}
-
-void App::createScenes()
 {
-	/*std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
+	//std::vector<Light*> planets_lights;
+	//planets_lights.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.5f)));
+	//Model* planet_model = new Model("planet.obj");
+	//DynamicRotation* selfRot = new DynamicRotation(glm::vec3(1.0f,0.0f,0.0f),2.0f);
+	//Translation* offset = new Translation(glm::vec3(10.0f,0.0f,0.0f));
+	//DynamicRotation* aroundRot = new DynamicRotation(glm::vec3(0.0f,1.0f,0.0f),2.0f);
+	//TransformationComposite* trc = new TransformationComposite({aroundRot,offset,selfRot});
+	//Material* mat = new Material(glm::vec3(0.0f),glm::vec3(0.0f),glm::vec3(0.1f),32);
 
-	//empty scene
-	scenes.emplace_back(new Scene(shaders));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[3], new TransformationComposite({new Translation(glm::vec3(0.0f))})));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
+	//planet_model->setTexture("../src/textures/grass.png");
+	//DrawableObject* planet = new DrawableObject(planet_model,shaders[1],trc, mat);
+	//scenes.emplace_back(new Scene(shaders, planets_lights));
+	//scenes.back()->addObject(planet);
 
-	//custom transformation
-	scenes.emplace_back(new Scene(shaders));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new CustomTransformation()})));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
-	
-	//placni krtka
-	std::vector<Light*> lights_3;
-	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.5f)));
-	scenes.emplace_back(new Scene(shaders,lights_3));
+    std::vector<Light*> lights;
+	lights.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+    scenes.emplace_back(new Scene(shaders, lights));
+
+	Model* sun_model = new Model("planet.obj");
+	Model* earth_model = new Model("planet.obj");
+	Model* moon_model = new Model("planet.obj");
+	sun_model->setTexture("../src/textures/sun.jpg");
+    earth_model->setTexture("../src/textures/earth.jpg");
+    moon_model->setTexture("../src/textures/moon.jpg");
+
+    Material* sunMat = new Material(glm::vec3(1.0f), glm::vec3(0.0f), glm::vec3(0.0f), 1);
+    
+    DrawableObject* sun = new DrawableObject(sun_model, shaders[1], new TransformationComposite({
+        new Scale(glm::vec3(2.0f))
+    }), sunMat);
+    scenes.back()->addObject(sun);
+
+    DynamicRotation* earthOrbit = new DynamicRotation(glm::vec3(0.0f, 1.0f, 0.0f),0.5f);
+
+    Material* earthMat = new Material(glm::vec3(0.03f), glm::vec3(0.5f), glm::vec3(0.0f), 1);
+    
+    DrawableObject* earth = new DrawableObject(earth_model, shaders[1], new TransformationComposite({
+        earthOrbit,
+        new Translation(glm::vec3(10.0f, 0.0f, 0.0f)),
+        new DynamicRotation(glm::vec3(0.0f, 1.0f, 0.0f),2.0f),
+        new Scale(glm::vec3(0.7f))
+    }), earthMat);
+    scenes.back()->addObject(earth);
+
+    Material* moonMat = new Material(glm::vec3(0.03f), glm::vec3(0.5f), glm::vec3(0.0f), 1);
+
+    DrawableObject* moon = new DrawableObject(moon_model, shaders[1], new TransformationComposite({
+        earthOrbit,
+        new Translation(glm::vec3(10.0f, 0.0f, 0.0f)),
+        new DynamicRotation(glm::vec3(0.0f, 1.0f, 0.0f),4.0f),
+        new Translation(glm::vec3(2.0f, 0.0f, 0.0f)),
+        new Scale(glm::vec3(0.3f))
+    }), moonMat);
+    scenes.back()->addObject(moon);
+}
+
+void App::sceneMole()
+{
+	std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
+	std::vector<Light*> mole_lights;
+	mole_lights.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.5f)));
+	scenes.emplace_back(new Scene(shaders,mole_lights));
 	scenes.back()->setSkyBox(faces, shaders.back());
 	Model* plainModel0 = new Model(plain,sizeof(plain),true);
 	plainModel0->setTexture("../src/textures/grass.png");
@@ -218,7 +261,25 @@ void App::createScenes()
 			++moleCnt;
 		}
 	}
-	
+}
+
+void App::createScenes()
+{
+	//sceneMole();
+	sceneForest();
+	scenePlanets();
+	/*
+	//empty scene
+	scenes.emplace_back(new Scene(shaders));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[3], new TransformationComposite({new Translation(glm::vec3(0.0f))})));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
+
+	//custom transformation
+	scenes.emplace_back(new Scene(shaders));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new CustomTransformation()})));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[0], new TransformationComposite({new Translation(glm::vec3(3,0,0))})));
+	*/
+	/*
 	std::vector<Light*> lights_4;
 	lights_3.emplace_back(new DirectionLight(glm::vec3(0.5,-0.7,0.3)));
 	lights_3.emplace_back(new DirectionLight(glm::vec3(-0.5,0.2,-0.3)));
@@ -299,7 +360,6 @@ void App::createScenes()
 	TransformationComposite* formulaTransform = new TransformationComposite({bezierMove,new Rotation(glm::vec3(0, -90, 0)),new Scale(glm::vec3(0.1f))});
 	scenes.back()->addObject(new DrawableObject(formulaModel,shaders[1],formulaTransform,new Material(glm::vec3(0.1f), glm::vec3(0.8f, 0.1f, 0.1f), glm::vec3(0.2f), 32)));
 	*/
-	sceneForest();
 
 	//std::vector<Light*> lights_test;
 	//PointLight* whispL = new PointLight(glm::vec3(1.0f),glm::vec3(1.0f, 0.5f, 0.05f));
