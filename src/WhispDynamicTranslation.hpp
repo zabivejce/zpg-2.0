@@ -9,7 +9,6 @@
 class WhispDynamicTranslation : public TransformationComponent
 {
     private:
-        //BezierTranslation* bezier;
         PointLight* light;
         glm::vec3 startPos;
         glm::vec3 range;

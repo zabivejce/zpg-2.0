@@ -46,7 +46,6 @@ class App{
         std::vector<ShaderProgram*> shaders;
         std::vector<Scene*> scenes;
 	    int activeScene = 0;
-        //std::vector<Light*> lights;
 
     public:
         App();
@@ -57,6 +56,7 @@ class App{
         void sceneForest();
         void scenePlanets();
         void sceneMole();
+        void sceneFormula();
         void removeObjFromActiveScene(int id)
         {scenes[activeScene]->removeObj(id);}
         Camera* getCamera()

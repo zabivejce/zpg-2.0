@@ -140,12 +140,11 @@ void App::sceneForest()
 		forest_lights.emplace_back(l);
 		whisps_lights.emplace_back(l);
 	}
-	FlashLight* fl = new FlashLight(glm::vec3(1.0f));
-	forest_lights.emplace_back(fl);
-
+	//FlashLight* fl = new FlashLight(glm::vec3(1.0f));
+	//forest_lights.emplace_back(new DirectionLight(glm::vec3(0.0f,-0.1f,0.0f)));
     scenes.emplace_back(new Scene(shaders, forest_lights));
 
-	scenes.back()->getCamnera()->registerObserver(fl);
+	//scenes.back()->getCamnera()->registerObserver(fl);
 
 	DrawableObject* whisp0 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[0], glm::vec3(17.5f,5.0f,17.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
 	DrawableObject* whisp1 = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whisps_lights[1], glm::vec3(17.5f,5.0f,52.5f), glm::vec3(17.5f,5.0f,17.5f), 3.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
@@ -245,10 +244,10 @@ void App::sceneMole()
 	std::vector<Light*> mole_lights;
 	mole_lights.emplace_back(new DirectionLight(glm::vec3(-0.5f, -1.0f, -0.5f)));
 	scenes.emplace_back(new Scene(shaders,mole_lights));
-	scenes.back()->setSkyBox(faces, shaders.back());
+	scenes.back()->setSkyBox(faces, shaders[4]);
 	Model* plainModel0 = new Model(plain,sizeof(plain),true);
 	plainModel0->setTexture("../src/textures/grass.png");
-	scenes.back()->addObject(new DrawableObject(plainModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f,0.0f,1.0f)),new Scale(glm::vec3(2.0f))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(0.0f),32)));
+	scenes.back()->addObject(new DrawableObject(plainModel0,shaders[1], new TransformationComposite({new Translation(glm::vec3(1.0f,0.0f,1.0f)),new Scale(glm::vec3(2.0f))}),new Material(glm::vec3(0.0f),glm::vec3(0.0f),glm::vec3(0.0f),1)));
 	int moleCnt = 100;
 	for(int i = 0; i < 3 ; ++i)
 	{
@@ -263,11 +262,34 @@ void App::sceneMole()
 	}
 }
 
+void App::sceneFormula()
+{
+	std::vector<Light*> lights_formula;
+	lights_formula.emplace_back(new DirectionLight(glm::vec3(-0.5f,-1.0f,-0.5f)));
+	lights_formula.emplace_back(new DirectionLight(glm::vec3(0.5f,0.1f,0.5f)));
+	scenes.emplace_back(new Scene(shaders, lights_formula));
+	Model* plane = new Model(plain, sizeof(plain), true);
+	plane->setTexture("../src/textures/grass.png");
+	scenes.back()->addObject(new DrawableObject(plane,shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f,-1.0f,0.0f)),new Scale(glm::vec3(30.0f))}),new Material(glm::vec3(0.1f),glm::vec3(0.6f),glm::vec3(0.0f),1)));
+	
+	std::vector<glm::mat4x3> path;
+	path.push_back(glm::mat4x3(glm::vec3(0, 0, 0), glm::vec3(5, 0, 5), glm::vec3(10, 0, 5), glm::vec3(10, 0, 0)));
+	path.push_back(glm::mat4x3(glm::vec3(10, 0, 0), glm::vec3(10, 0, -5), glm::vec3(5, 0, -5), glm::vec3(0, 0, 0)));
+	path.push_back(glm::mat4x3(glm::vec3(0, 0, 0), glm::vec3(-5, 0, 5), glm::vec3(-10, 0, 5), glm::vec3(-10, 0, 0)));
+	path.push_back(glm::mat4x3(glm::vec3(-10, 0, 0), glm::vec3(-10, 0, -5), glm::vec3(-5, 0, -5), glm::vec3(0, 0, 0)));
+
+	Model* formulaModel = new Model("formula1.obj");
+	TransformationComponent* bezierMove = new BezierTranslation(path, 0.5f);
+	TransformationComposite* formulaTransform = new TransformationComposite({bezierMove,new Rotation(glm::vec3(0, -90, 0)),new Scale(glm::vec3(0.1f))});
+	scenes.back()->addObject(new DrawableObject(formulaModel,shaders[1],formulaTransform,new Material(glm::vec3(0.1f), glm::vec3(0.8f, 0.1f, 0.1f), glm::vec3(0.2f), 32)));
+}
+
 void App::createScenes()
 {
-	//sceneMole();
+	sceneMole();
 	sceneForest();
 	scenePlanets();
+	sceneFormula();
 	/*
 	//empty scene
 	scenes.emplace_back(new Scene(shaders));
@@ -287,6 +309,8 @@ void App::createScenes()
 	Model* hru0268Tex = new Model("hru0268-tex.obj");
 	hru0268Tex->setTexture("../src/textures/grass.png");
 	scenes.back()->addObject(new DrawableObject(hru0268Tex, shaders[1],new TransformationComposite({new Translation(glm::vec3(0))})));
+	*/
+	/*
 	std::vector<Light*> lights_4;
 	FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
 	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
@@ -340,35 +364,7 @@ void App::createScenes()
 	scenes.back()->addObject(new DrawableObject(fiona,shaders[1],new TransformationComposite({new Translation(glm::vec3(2.0f,0.0f,0.0f))})));
 	scenes.back()->addObject(new DrawableObject(shrek,shaders[1],new TransformationComposite({new Translation(glm::vec3(-2.0f,0.0f,0.0f))})));
 	scenes.back()->addObject(new DrawableObject(toilet,shaders[1],new TransformationComposite({new Translation(glm::vec3(0.0f,0.0f,-4.0f))})));
-
-	std::vector<Light*> lights_formula;
-	lights_formula.emplace_back(new DirectionLight(glm::vec3(-0.5f,-1.0f,-0.5f)));
-	lights_formula.emplace_back(new DirectionLight(glm::vec3(0.5f,0.1f,0.5f)));
-	scenes.emplace_back(new Scene(shaders, lights_formula));
-	Model* plane = new Model(plain, sizeof(plain), true);
-	plane->setTexture("../src/textures/grass.png");
-	scenes.back()->addObject(new DrawableObject(plane,shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f,-1.0f,0.0f)),new Scale(glm::vec3(30.0f))}),new Material(glm::vec3(0.1f),glm::vec3(0.6f),glm::vec3(0.0f),1)));
-	
-	std::vector<glm::mat4x3> path;
-	path.push_back(glm::mat4x3(glm::vec3(0, 0, 0), glm::vec3(5, 0, 5), glm::vec3(10, 0, 5), glm::vec3(10, 0, 0)));
-	path.push_back(glm::mat4x3(glm::vec3(10, 0, 0), glm::vec3(10, 0, -5), glm::vec3(5, 0, -5), glm::vec3(0, 0, 0)));
-	path.push_back(glm::mat4x3(glm::vec3(0, 0, 0), glm::vec3(-5, 0, 5), glm::vec3(-10, 0, 5), glm::vec3(-10, 0, 0)));
-	path.push_back(glm::mat4x3(glm::vec3(-10, 0, 0), glm::vec3(-10, 0, -5), glm::vec3(-5, 0, -5), glm::vec3(0, 0, 0)));
-
-	Model* formulaModel = new Model("formula1.obj");
-	TransformationComponent* bezierMove = new BezierTranslation(path, 0.5f);
-	TransformationComposite* formulaTransform = new TransformationComposite({bezierMove,new Rotation(glm::vec3(0, -90, 0)),new Scale(glm::vec3(0.1f))});
-	scenes.back()->addObject(new DrawableObject(formulaModel,shaders[1],formulaTransform,new Material(glm::vec3(0.1f), glm::vec3(0.8f, 0.1f, 0.1f), glm::vec3(0.2f), 32)));
 	*/
-
-	//std::vector<Light*> lights_test;
-	//PointLight* whispL = new PointLight(glm::vec3(1.0f),glm::vec3(1.0f, 0.5f, 0.05f));
-	//lights_test.emplace_back(whispL);
-	//scenes.emplace_back(new Scene(shaders,lights_test));
-	//DrawableObject* whisp = new DrawableObject(new Model(sphere, sizeof(sphere)),shaders[5],new TransformationComposite({new WhispDynamicTranslation(whispL, glm::vec3(0.0f), glm::vec3(5.0f), 1.0f),new Scale(glm::vec3(0.2f))}),new Material(glm::vec3(1.0f), glm::vec3(1.0f), glm::vec3(1.0f), 32));
-	//scenes.back()->addObject(whisp);
-	//DrawableObject* treeDO = new DrawableObject(new Model(tree, sizeof(tree)),shaders[1], new TransformationComposite({new Translation(glm::vec3(0.0f))}), new Material(glm::vec3(0.0f,0.6f,0.0f),glm::vec3(0.8f),glm::vec3(0.0f),32));
-	//scenes.back()->addObject(treeDO);
 }
 
 void App::run()
