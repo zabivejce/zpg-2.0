@@ -33,6 +33,9 @@ void SkyBox::draw(glm::mat4 projection, glm::mat4 view)
     shader->setUniform("projection",projection);
     shader->setUniform("skybox",0);
 
+    //skybox have id 0
+    glStencilFunc(GL_ALWAYS, 0, 0xFF);
+
     glDepthMask(GL_FALSE);
     glBindVertexArray(VAO);
     glBindTexture(GL_TEXTURE_CUBE_MAP, tex);

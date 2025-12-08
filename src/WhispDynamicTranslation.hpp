@@ -36,6 +36,7 @@ class WhispDynamicTranslation : public TransformationComponent
             currPos = start;
             this->range = range;
             this->speed = speed;
+            newTarget();
         }
         void update(float delta) override
         {
