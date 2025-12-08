@@ -309,19 +309,18 @@ void App::createScenes()
 	Model* hru0268Tex = new Model("hru0268-tex.obj");
 	hru0268Tex->setTexture("../src/textures/grass.png");
 	scenes.back()->addObject(new DrawableObject(hru0268Tex, shaders[1],new TransformationComposite({new Translation(glm::vec3(0))})));
-	*/
+
+	std::vector<Light*> lights_balls;
+	//FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
+	lights_balls.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
+	scenes.emplace_back(new Scene(shaders,lights_balls));
+
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f),32),1));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f),32),2));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f),32),3));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(1.0f),glm::vec3(1.0f),glm::vec3(1.0f),32),4));
+
 	/*
-	std::vector<Light*> lights_4;
-	FlashLight* flash = new FlashLight(glm::vec3(-20.5f,5.0f,-14.0f),glm::vec3(-1,0,0),glm::vec3(1.0f,0.1f,0.01f),20);
-	lights_0.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
-	scenes.emplace_back(new Scene(shaders,lights_4));
-
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),1));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2,0.2,0.2))}),2));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2,0.2,0.2))}),3));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2,0.2,0.2))}),4));
-
-
 	const int space = 7, size = 7;
 	std::vector<Light*> lights_forest;
 	lights_forest.emplace_back(new PointLight(glm::vec3(2.5f,0.0f,2.5f),glm::vec3(1.0,0.1,0.01)));
