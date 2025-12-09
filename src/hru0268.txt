@@ -1,11 +1,15 @@
-1.
-    v podstate Scale
-    perspektivni deleni
-    kazda slozka je delena slozkou w (x,y,z,w), coz je v custom vertex shaderu natvrdo nastavene na 10
-    kdyz mame CustomTransformatin, tak delame to stejne, akorat tu defaultni 1 nasobime konkretne 20
-
-2.
-    krtci (koule) jsou vygenerovani hned na zacatku 'hry'
-    celou logiku krtku zajistuje trida MoleDynamicTranslation
-    pri 'schovani' za rovinu s travou dostanou nahodny wait time a nahodnou rychlost (nahoda ve hre)
-    pri kliknuti na krtka se objekt znici, takze se objevy novy pri zovuspusteni aplikace
+mam
+    phonguv osvetlovaci model
+    bodove, smerove svetlo
+    skybox
+    material
+    vice shader programu
+    identifikace objektu
+    nacitani modelu
+    bezierova kubika (reseno pomoci bersteinovych matic, ktere jsou opsane)
+    spline krivky
+    vlastni obj login model
+    unproject
+    viditelnost Z-buffer maliruv algoritmus
+nemam
+    nefunkcni baterka
