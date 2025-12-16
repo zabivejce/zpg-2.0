@@ -22,6 +22,7 @@ void DrawableObject::draw(Camera* camera)
         shader->setMaterial(material);
     shader->setUniform("view",camera->getView());
     shader->setUniform("projection",camera->getProjection());
+    shader->setUniform("eye", camera->getEye());
     if(!lights.empty())
         shader->setLights(lights);
     if(model->doHaveTexture())

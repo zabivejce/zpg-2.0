@@ -1,15 +1,15 @@
 mam
     phonguv osvetlovaci model
     bodove, smerove svetlo
-    skybox
     material
     vice shader programu
-    identifikace objektu
     nacitani modelu
     bezierova kubika (reseno pomoci bersteinovych matic, ktere jsou opsane)
     spline krivky
-    vlastni obj login model
-    unproject
+    vlastni obj login model (udelano podle tutorialu na vasem cviceni)
+    unproject (spis vice opsano nez pochopeno)
+    identifikace objektu
+    skybox
     viditelnost Z-buffer maliruv algoritmus
 nemam
-    nefunkcni baterka
+    nefunkcni baterka (je implmentovana, i v phongovi, ale nebyl jsem schopen zprovoznit)

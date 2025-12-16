@@ -15,7 +15,7 @@ uniform int haveTex;
 struct Material
 {
     vec3 ra;    //ambient
-    vec3 rd;    //color
+    vec3 rd;    //diffuse
     vec3 rs;    //specular
     int power;
 };
@@ -65,7 +65,7 @@ void main (void)
 
             float attenuation = 1.0 / (constant + linear * distance + quadratic * (distance * distance));
 
-            float spec = 0.0; 
+            float spec = 0.0;
             if(dot(norm,lightDir) >= 0)
                 spec = pow(max(dot(viewDir, normalize(reflectDir)), 0.0), material.power);
 

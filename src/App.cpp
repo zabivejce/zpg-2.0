@@ -132,6 +132,8 @@ void App::createShaders()
 
 void App::sceneForest()
 {
+	std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
+	
 	std::vector<Light*> forest_lights;
 	std::vector<PointLight*> whisps_lights;
 	for(int i = 0 ; i < 4 ; ++i)
@@ -143,6 +145,7 @@ void App::sceneForest()
 	//FlashLight* fl = new FlashLight(glm::vec3(1.0f));
 	//forest_lights.emplace_back(new DirectionLight(glm::vec3(0.0f,-0.1f,0.0f)));
     scenes.emplace_back(new Scene(shaders, forest_lights));
+	scenes.back()->setSkyBox(faces,shaders[4]);
 
 	//scenes.back()->getCamnera()->registerObserver(fl);
 
@@ -157,7 +160,7 @@ void App::sceneForest()
 
 
     Model* treeModel = new Model(tree, sizeof(tree));
-    Material* treeMaterial = new Material(glm::vec3(0.0f, 0.03f, 0.0f), glm::vec3(0.0f,0.5f,0.0f), glm::vec3(0.0f), 32);
+    Material* treeMaterial = new Material(glm::vec3(0.0f, 0.1f, 0.0f), glm::vec3(0.0f,0.5f,0.0f), glm::vec3(0.0f), 32);
 
 	for(int i = 0 ; i < 10 ; ++i)
 	{
@@ -174,7 +177,7 @@ void App::sceneForest()
             new Translation(glm::vec3(35.0f, 0.0f, 35.0f)),
             new Scale(glm::vec3(100.0f))
         }),
-        new Material(glm::vec3(0.03f), glm::vec3(0.5f), glm::vec3(0.0f), 1)
+        new Material(glm::vec3(0.1f), glm::vec3(0.5f), glm::vec3(0.0f), 1)
     );
     floor->setTexture("../src/textures/grass.png");
     scenes.back()->addObject(floor);
@@ -304,10 +307,10 @@ void App::createScenes()
 	lights_balls.emplace_back(new PointLight(glm::vec3(0.0f,0.0f,0.0f),glm::vec3(1.0,0.1,0.01)));
 	scenes.emplace_back(new Scene(shaders,lights_balls));
 
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-1,0,0)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),4),1));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,1)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),8),2));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(1,0,0)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),16),3));
-	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-1)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),32),4));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(-0.5,0,0)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),1),1));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,0.5)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),1),2));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0.5,0,0)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),1),3));
+	scenes.back()->addObject(new DrawableObject(new Model(sphere,sizeof(sphere)),shaders[1],new TransformationComposite({new Translation(glm::vec3(0,0,-0.5)),new Scale(glm::vec3(0.2))}),new Material(glm::vec3(0.1f,0.0f,0.0f),glm::vec3(0.7f,0.0f,0.0f),glm::vec3(1.0f),1),4));
 
 	//cubes
 	std::vector<std::string> faces = {"../src/textures/posx.jpg","../src/textures/negx.jpg","../src/textures/posy.jpg","../src/textures/negy.jpg","../src/textures/posz.jpg","../src/textures/negz.jpg"};
